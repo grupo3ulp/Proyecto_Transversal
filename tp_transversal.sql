@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2022 a las 00:56:45
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Oct 14, 2022 at 10:20 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tp_transversal`
+-- Database: `tp_transversal`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumno`
+-- Table structure for table `alumno`
 --
 
 CREATE TABLE `alumno` (
@@ -36,10 +36,19 @@ CREATE TABLE `alumno` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `alumno`
+--
+
+INSERT INTO `alumno` (`id_alumno`, `dni`, `nombre`, `apellido`, `fecha_nacimiento`, `estado`) VALUES
+(1, '41148153', 'Dante', 'Rodriguez', '1998-08-09', 0),
+(2, '35123456', 'Marco', 'Silva', '1992-05-05', 1),
+(3, '38987654', 'Luna', 'Lopardo', '1995-12-30', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inscripcion`
+-- Table structure for table `inscripcion`
 --
 
 CREATE TABLE `inscripcion` (
@@ -48,10 +57,20 @@ CREATE TABLE `inscripcion` (
   `nota` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`id_alumno`, `id_materia`, `nota`) VALUES
+(2, 3, 8),
+(2, 4, 8),
+(3, 2, 0),
+(3, 3, 0);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materia`
+-- Table structure for table `materia`
 --
 
 CREATE TABLE `materia` (
@@ -62,50 +81,61 @@ CREATE TABLE `materia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tablas volcadas
+-- Dumping data for table `materia`
+--
+
+INSERT INTO `materia` (`id_materia`, `nombre`, `año`, `estado`) VALUES
+(1, 'Laboratorio 1', 1, 1),
+(2, 'Web 1', 1, 1),
+(3, 'Matematica 1', 1, 1),
+(4, 'EDA', 1, 1),
+(5, 'Laboratorio 2', 2, 1);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `alumno`
+-- Indexes for table `alumno`
 --
 ALTER TABLE `alumno`
   ADD PRIMARY KEY (`id_alumno`);
 
 --
--- Indices de la tabla `inscripcion`
+-- Indexes for table `inscripcion`
 --
 ALTER TABLE `inscripcion`
   ADD KEY `id_alumno` (`id_alumno`),
   ADD KEY `id_materia` (`id_materia`);
 
 --
--- Indices de la tabla `materia`
+-- Indexes for table `materia`
 --
 ALTER TABLE `materia`
   ADD PRIMARY KEY (`id_materia`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `alumno`
+-- AUTO_INCREMENT for table `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `materia`
+-- AUTO_INCREMENT for table `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id_materia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_materia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `inscripcion`
+-- Constraints for table `inscripcion`
 --
 ALTER TABLE `inscripcion`
   ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`id_alumno`) REFERENCES `alumno` (`id_alumno`),
