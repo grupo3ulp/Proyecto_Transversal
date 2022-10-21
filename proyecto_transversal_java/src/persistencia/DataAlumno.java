@@ -20,7 +20,7 @@ public class DataAlumno {
         this.conec = Conexion.getConexion();
     }
 
-    public void guardarAlumno(Alumno a) {
+    public void createAlumno(Alumno a) {
         String sql = "INSERT INTO `alumno`(`dni`, `nombre`, `apellido`, `fecha_nacimiento`, `estado`) VALUES (?,?,?,?,?)";
         try {
 
@@ -52,7 +52,7 @@ public class DataAlumno {
 
     }
 
-    public Alumno mostrarAlumno(int id) {
+    public Alumno readAlumno(int id) {
         String sql = "SELECT * FROM `alumno` WHERE estado=1 AND id_alumno=?";
         Alumno alumnoAux = new Alumno();
         try {
@@ -78,4 +78,11 @@ public class DataAlumno {
         }
         return alumnoAux;
     }
+     public void updateAlumno(Alumno alumno){
+     
+     }
+     
+     public void deleteAlumno(Alumno alumno){
+     
+     }
 }

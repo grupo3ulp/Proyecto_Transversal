@@ -15,7 +15,7 @@ public class main {
 
         DataAlumno dataAlumno = new DataAlumno();
 
-        dataAlumno.guardarAlumno(alu1);
+        dataAlumno.createAlumno(alu1);
         
         Materia mat1 = new Materia("Lengua", 2, true);
         
