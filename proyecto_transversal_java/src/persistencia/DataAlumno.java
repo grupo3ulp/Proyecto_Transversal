@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -53,11 +54,10 @@ public class DataAlumno {
     }
 
     public Alumno readAlumno(int id) {
-        String sql = "SELECT * FROM `alumno` WHERE estado=1 AND id_alumno=?";
+        String sql = "SELECT * FROM `alumno` WHERE estado=1 AND id_alumno = ?";
         Alumno alumnoAux = new Alumno();
         try {
-
-            PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
@@ -68,7 +68,6 @@ public class DataAlumno {
                 alumnoAux.setApellido(rs.getString("apellido"));
                 alumnoAux.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 alumnoAux.setEstado(rs.getBoolean("estado"));
-
             }
 
             conec.close();
@@ -78,6 +77,10 @@ public class DataAlumno {
         }
         return alumnoAux;
     }
+    public ArrayList<Alumno> readAllAlumno() {
+        
+    return null;
+    }
      public void updateAlumno(Alumno alumno){
      
      }
@@ -85,4 +88,5 @@ public class DataAlumno {
      public void deleteAlumno(Alumno alumno){
      
      }
+     
 }
