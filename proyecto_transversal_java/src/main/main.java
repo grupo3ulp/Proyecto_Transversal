@@ -1,9 +1,11 @@
 package main;
 
 import entidades.Alumno;
+import entidades.Materia;
 import java.time.LocalDate;
 import persistencia.Conexion;
 import persistencia.DataAlumno;
+import persistencia.DataMateria;
 
 public class main {
 
@@ -14,6 +16,12 @@ public class main {
         DataAlumno dataAlumno = new DataAlumno();
 
         dataAlumno.guardarAlumno(alu1);
-
+        
+        Materia mat1 = new Materia("Lengua", 2, true);
+        
+        DataMateria dataMateria = new DataMateria();
+        
+        dataMateria.guardarMateria(mat1);
+        
     }
 }
