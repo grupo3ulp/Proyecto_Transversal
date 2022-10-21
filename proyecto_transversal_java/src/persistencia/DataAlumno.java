@@ -77,16 +77,39 @@ public class DataAlumno {
         }
         return alumnoAux;
     }
+
     public ArrayList<Alumno> readAllAlumno() {
-        
-    return null;
+        ArrayList<Alumno> listaAux = new ArrayList();
+        String sql = "SELECT * FROM `alumno` WHERE estado=1";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Alumno alumnoAux = new Alumno();
+                alumnoAux.setId_alumno(rs.getInt("id_alumno"));
+                alumnoAux.setDni(rs.getString("dni"));
+                alumnoAux.setNombre(rs.getString("nombre"));
+                alumnoAux.setApellido(rs.getString("apellido"));
+                alumnoAux.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                alumnoAux.setEstado(rs.getBoolean("estado"));
+                listaAux.add(alumnoAux);
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+        }
+
+        return listaAux;
     }
-     public void updateAlumno(Alumno alumno){
-     
-     }
-     
-     public void deleteAlumno(Alumno alumno){
-     
-     }
-     
+
+    public void updateAlumno(Alumno alumno) {
+
+    }
+
+    public void deleteAlumno(Alumno alumno) {
+
+    }
+
 }
