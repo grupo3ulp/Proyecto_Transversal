@@ -21,15 +21,15 @@ public class DataAlumno {
         this.conec = Conexion.getConexion();
     }
 
-    public void createAlumno(Alumno a) {
+    public void createAlumno(Alumno alumnoAux) {
         String sql = "INSERT INTO `alumno`(`dni`, `nombre`, `apellido`, `fecha_nacimiento`, `estado`) VALUES (?,?,?,?,?)";
         try {
 
-            PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, a.getDni());
-            ps.setString(2, a.getNombre());
-            ps.setString(3, a.getApellido());
-            ps.setDate(4, java.sql.Date.valueOf(a.getFecha_nacimiento()));
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setString(1, alumnoAux.getDni());
+            ps.setString(2, alumnoAux.getNombre());
+            ps.setString(3, alumnoAux.getApellido());
+            ps.setDate(4, java.sql.Date.valueOf(alumnoAux.getFecha_nacimiento()));
             ps.setBoolean(5, true);
 
             if (ps.executeUpdate() > 0) {
@@ -42,7 +42,7 @@ public class DataAlumno {
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
-                a.setId_alumno(rs.getInt(1));
+                alumnoAux.setId_alumno(rs.getInt(1));
             }
 
             conec.close();
@@ -104,8 +104,165 @@ public class DataAlumno {
         return listaAux;
     }
 
-    public void updateAlumno(Alumno alumno) {
+    public void updateAlumno(int id, Alumno alumnoAux, int dato) {
+        String sql = "";
 
+        switch (dato) {
+            case 1:
+                sql = "UPDATE `alumno` SET `dni`=?,`nombre`=?,`apellido`=?,`fecha_nacimiento`=?"
+                        + ",`estado`=? WHERE id_alumno=?";
+                try {
+                    PreparedStatement ps = conec.prepareStatement(sql);
+                    ps.setInt(6, id);
+                    ResultSet rs = ps.getGeneratedKeys();
+
+                    ps.setString(1, alumnoAux.getDni());
+                    ps.setString(2, alumnoAux.getNombre());
+                    ps.setString(3, alumnoAux.getApellido());
+                    ps.setDate(4, java.sql.Date.valueOf(alumnoAux.getFecha_nacimiento()));
+                    ps.setBoolean(5, alumnoAux.isEstado());
+
+                    if (ps.executeUpdate() > 0) {
+                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+
+                    }
+
+                    conec.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+                }
+                break;
+            case 2:
+                sql = "UPDATE `alumno` SET `dni`=? WHERE id_alumno=?";
+                try {
+                    PreparedStatement ps = conec.prepareStatement(sql);
+                    ps.setInt(2, id);
+                    ResultSet rs = ps.getGeneratedKeys();
+
+                    ps.setString(1, alumnoAux.getDni());
+
+                    if (ps.executeUpdate() > 0) {
+                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+
+                    }
+
+                    conec.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+                }
+                break;
+            case 3:
+                sql = "UPDATE `alumno` SET `nombre`=? WHERE id_alumno=?";
+                try {
+                    PreparedStatement ps = conec.prepareStatement(sql);
+                    ps.setInt(2, id);
+                    ResultSet rs = ps.getGeneratedKeys();
+
+                    ps.setString(1, alumnoAux.getNombre());
+
+                    if (ps.executeUpdate() > 0) {
+                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+
+                    }
+
+                    conec.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+                }
+                break;
+            case 4:
+                sql = "UPDATE `alumno` SET `apellido`=? WHERE id_alumno=?";
+                try {
+                    PreparedStatement ps = conec.prepareStatement(sql);
+                    ps.setInt(2, id);
+                    ResultSet rs = ps.getGeneratedKeys();
+
+                    ps.setString(1, alumnoAux.getApellido());
+
+                    if (ps.executeUpdate() > 0) {
+                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+
+                    }
+
+                    conec.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+                }
+                break;
+            case 5:
+                sql = "UPDATE `alumno` SET `fecha_nacimiento`=? WHERE id_alumno=?";
+                try {
+                    PreparedStatement ps = conec.prepareStatement(sql);
+                    ps.setInt(2, id);
+                    ResultSet rs = ps.getGeneratedKeys();
+
+                    ps.setDate(1, java.sql.Date.valueOf(alumnoAux.getFecha_nacimiento()));
+
+                    if (ps.executeUpdate() > 0) {
+                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+
+                    }
+
+                    conec.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+                }
+                break;
+            case 6:
+                sql = "UPDATE `alumno` SET `estado`=? WHERE id_alumno=?";
+                try {
+                    PreparedStatement ps = conec.prepareStatement(sql);
+                    ps.setInt(2, id);
+                    ResultSet rs = ps.getGeneratedKeys();
+                    ps.setBoolean(1, alumnoAux.isEstado());
+                    
+                    if (ps.executeUpdate() > 0) {
+                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+                    }
+
+                    conec.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+                }
+
+                break;
+        }
+
+//        try {
+//            PreparedStatement ps = conec.prepareStatement(sql);//2
+//            ps.setString(1, alumno.getDni());
+//            ps.setString(2, alumno.getNombre());
+//            ps.setString(3, alumno.getApellido());
+//            ps.setDate(4, Date.valueOf(alumno.getFecha_nacimiento()));
+//            ps.setBoolean(5, alumno.isEstado());
+//            //          ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
+//            if (ps.executeUpdate() > 0) {
+//                JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS");
+//            }
+//
+//             conec.close();
+//
+//        } catch (SQLException ex) {
+//             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+//        }
     }
 
     public void deleteAlumno(Alumno alumno) {

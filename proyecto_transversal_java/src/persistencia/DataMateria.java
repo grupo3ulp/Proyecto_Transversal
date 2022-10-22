@@ -17,7 +17,7 @@ public class DataMateria {
         this.conec = Conexion.getConexion();
     }
     
-    public void guardarMateria(Materia a){
+    public void createMateria(Materia a){
         try{
             String sql = "INSERT INTO `materia`( `nombre`, `año`, `estado`) VALUES (?,?,?)"; 
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
