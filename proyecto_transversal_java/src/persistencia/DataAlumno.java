@@ -230,7 +230,7 @@ public class DataAlumno {
                     ps.setInt(2, id);
                     ResultSet rs = ps.getGeneratedKeys();
                     ps.setBoolean(1, alumnoAux.isEstado());
-                    
+
                     if (ps.executeUpdate() > 0) {
                         JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
                     } else {
@@ -245,10 +245,35 @@ public class DataAlumno {
 
                 break;
         }
-   
+
     }
 
-    public void deleteAlumno(Alumno alumno) {
+    public void deleteAlumno(int id) {
+        String sql = "DELETE FROM inscripcion WHERE id_alumno=?";
+        String sql2 = "DELETE FROM alumno WHERE id_alumno=?";
+        
+         if((JOptionPane.showConfirmDialog(null, "Borara el "
+                 + "alumno con id "+ id+" y todos los datos relacionados a este desea continuar?", "Confirmar Borrado",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE))==0){
+        try {
+                PreparedStatement ps = conec.prepareStatement(sql);
+                PreparedStatement ps2 = conec.prepareStatement(sql2);
+                ps.setInt(1, id);
+                ps2.setInt(1, id);
+                if (ps.executeUpdate() > 0 || ps2.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+                }
+
+                conec.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+            }
+        }
+           
 
     }
 
