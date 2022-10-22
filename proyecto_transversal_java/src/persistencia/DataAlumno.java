@@ -245,24 +245,7 @@ public class DataAlumno {
 
                 break;
         }
-
-//        try {
-//            PreparedStatement ps = conec.prepareStatement(sql);//2
-//            ps.setString(1, alumno.getDni());
-//            ps.setString(2, alumno.getNombre());
-//            ps.setString(3, alumno.getApellido());
-//            ps.setDate(4, Date.valueOf(alumno.getFecha_nacimiento()));
-//            ps.setBoolean(5, alumno.isEstado());
-//            //          ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
-//            if (ps.executeUpdate() > 0) {
-//                JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS");
-//            }
-//
-//             conec.close();
-//
-//        } catch (SQLException ex) {
-//             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-//        }
+   
     }
 
     public void deleteAlumno(Alumno alumno) {
