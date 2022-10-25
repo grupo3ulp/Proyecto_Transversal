@@ -14,12 +14,12 @@ public class main {
         DataAlumno dataAlumno = new DataAlumno();
         
 //        metodo createAlumno:
-        LocalDate date = LocalDate.of(2021, 12, 28);
-        Alumno alu1 = new Alumno("11111111", "Luis", "Silva", date, true);
+//        LocalDate date = LocalDate.of(2021, 12, 28);
+//        Alumno alu1 = new Alumno("11111111", "Luis", "Silva", date, true);
 //        dataAlumno.createAlumno(alu1); consultar por q salta error si usamos 2 metodos a la vez
 
-//        metodo readAlumno:
-//        System.out.println(dataAlumno.readAlumno(2));
+//       metodo readAlumno:
+ //     System.out.println(dataAlumno.readAlumno(2));
 
 //        metodo readAllAlumno:     
 //        dataAlumno.readAllAlumno().forEach(System.out::println);
@@ -46,7 +46,10 @@ public class main {
 //        Prueba DataMAteria ===============================================================================================================
 //        Materia mat1 = new Materia("Lengua", 2, true);
 //        
-//        DataMateria dataMateria = new DataMateria();
+      DataMateria dataMateria = new DataMateria();
 //        dataMateria.createMateria(mat1);
+
+//        metodo readMateria:
+        System.out.println(dataMateria.readMateria(2));
     }
 }

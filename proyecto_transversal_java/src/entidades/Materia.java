@@ -56,4 +56,11 @@ public class Materia  {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Materia{" + "id_materia=" + id_materia + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
+    }
+    
+    
+
 }
