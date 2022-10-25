@@ -39,14 +39,14 @@ public class main {
 //        dataAlumno.updateAlumno(3, alu1, 6);
         
           //      delete alumno
-//          dataAlumno.deleteAlumno(1);
+         // dataAlumno.deleteAlumno(1);
 
 
 
 //        Prueba DataMAteria ===============================================================================================================
-       Materia mat1 = new Materia("Lengua", 2, true);
+//       Materia mat1 = new Materia("Lengua", 2, true);
 //        
-    DataMateria dataMateria = new DataMateria();
+   DataMateria dataMateria = new DataMateria();
 //       dataMateria.createMateria(mat1);
 
 //        metodo readMateria:
@@ -57,12 +57,15 @@ public class main {
 
 //        metodo updateMateria:
 //        //      update all  
-    dataMateria.updateMateria(3, mat1, 1);
+//    dataMateria.updateMateria(3, mat1, 1);
 //        //      update nombre  
 //     dataMateria.updateMateria(3, mat1, 2);
 //        //      update anio
 //      dataMateria.updateMateria(3, mat1, 3);
 //        //      update estado
 //        dataMateria.updateMateria(3, mat1, 4);
+
+          //      delete materia
+          dataMateria.deleteMateria(3);
     }
 }
