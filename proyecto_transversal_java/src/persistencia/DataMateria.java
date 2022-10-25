@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class DataMateria {
@@ -61,5 +62,26 @@ public class DataMateria {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
         }
         return materiaAux;
+    }
+    
+    public ArrayList<Materia> readAllMateria(){
+        ArrayList<Materia> listaAux = new ArrayList();
+        String sql = "SELECT * FROM `materia` WHERE estado=1";
+        try{
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Materia materiaAux = new Materia();
+                materiaAux.setId_materia(rs.getInt("id_materia"));
+                materiaAux.setNombre(rs.getString("nombre"));
+                materiaAux.setAnio(rs.getInt(3));
+                materiaAux.setEstado(rs.getBoolean("estado"));
+                listaAux.add(materiaAux);
+            }
+            conec.close();
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+        }
+        return listaAux;
     }
 }

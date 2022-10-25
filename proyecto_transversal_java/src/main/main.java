@@ -46,10 +46,13 @@ public class main {
 //        Prueba DataMAteria ===============================================================================================================
 //        Materia mat1 = new Materia("Lengua", 2, true);
 //        
-      DataMateria dataMateria = new DataMateria();
+     DataMateria dataMateria = new DataMateria();
 //        dataMateria.createMateria(mat1);
 
 //        metodo readMateria:
-        System.out.println(dataMateria.readMateria(2));
+//        System.out.println(dataMateria.readMateria(2));
+
+//        metodo readAllMateira:     
+       dataMateria.readAllMateria().forEach(System.out::println);
     }
 }
