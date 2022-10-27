@@ -1,11 +1,7 @@
 package main;
 
-import entidades.Alumno;
-import entidades.Materia;
-import java.time.LocalDate;
-import persistencia.Conexion;
 import persistencia.DataAlumno;
-import persistencia.DataMateria;
+import persistencia.DataInscripcion;
 
 public class main {
 
@@ -46,7 +42,7 @@ public class main {
 //        Prueba DataMAteria ===============================================================================================================
 //       Materia mat1 = new Materia("Lengua", 2, true);
 //        
-   DataMateria dataMateria = new DataMateria();
+   //DataMateria dataMateria = new DataMateria();
 //       dataMateria.createMateria(mat1);
 
 //        metodo readMateria:
@@ -66,6 +62,17 @@ public class main {
 //        dataMateria.updateMateria(3, mat1, 4);
 
           //      delete materia
-          dataMateria.deleteMateria(3);
+          //dataMateria.deleteMateria(3);
+          
+          // -- INSCRIPCIÓN --
+          // BUSCAR INSCRIPCIÓN (usando id_inscripción)
+          DataInscripcion inscripcion = new DataInscripcion();
+          inscripcion.obtenerInscripcion(2);
+          System.out.println(inscripcion.obtenerInscripcion(2));
+          
+          
+          // ACTUALIZAR NOTA (usando id_inscripción)
+          
+          inscripcion.actualizarNota(3);
     }
 }
