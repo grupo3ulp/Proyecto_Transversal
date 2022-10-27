@@ -1,11 +1,13 @@
 package persistencia;
 
 import entidades.Inscripcion;
+import entidades.Materia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -101,6 +103,59 @@ public class DataInscripcion {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
 
         }
+    }
+
+    public ArrayList<Materia> obtenerMateriasInscriptas(int id_alumno) {
+        ArrayList<Materia> listaAux = new ArrayList();
+        String sql = "SELECT * FROM materia m \n"
+                + "JOIN inscripcion l \n"
+                + "ON l.id_materia = m.id_materia \n"
+                + "WHERE l.id_alumno = ?;";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, id_alumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materiaAux = new Materia();
+                materiaAux.setId_materia(rs.getInt("id_materia"));
+                materiaAux.setNombre(rs.getString("nombre"));
+                materiaAux.setAnio(rs.getInt("año"));
+                materiaAux.setEstado(rs.getBoolean("estado"));
+                listaAux.add(materiaAux);
+            }
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+        }
+
+        return listaAux;
+    }
+
+    public ArrayList<Materia> obtenerMateriasNoInscriptas(int id_alumno) {
+        ArrayList<Materia> listaAux = new ArrayList();
+        String sql = "SELECT *\n"
+                + "FROM materia m\n"
+                + "WHERE NOT EXISTS (SELECT id_materia FROM inscripcion l\n"
+                + "WHERE m.id_materia = l.id_materia\n"
+                + "AND l.id_alumno = ?)";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, id_alumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materiaAux = new Materia();
+                materiaAux.setId_materia(rs.getInt("id_materia"));
+                materiaAux.setNombre(rs.getString("nombre"));
+                materiaAux.setAnio(rs.getInt("año"));
+                materiaAux.setEstado(rs.getBoolean("estado"));
+                listaAux.add(materiaAux);
+            }
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+        }
+
+        return listaAux;
     }
 
 }

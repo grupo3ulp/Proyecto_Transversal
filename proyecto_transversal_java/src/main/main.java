@@ -66,13 +66,19 @@ public class main {
           
           // -- INSCRIPCIÓN --
           // BUSCAR INSCRIPCIÓN (usando id_inscripción)
-          DataInscripcion inscripcion = new DataInscripcion();
-          inscripcion.obtenerInscripcion(2);
-          System.out.println(inscripcion.obtenerInscripcion(2));
+            DataInscripcion inscripcion = new DataInscripcion();
+//          inscripcion.obtenerInscripcion(2);
+//          System.out.println(inscripcion.obtenerInscripcion(2));
           
           
           // ACTUALIZAR NOTA (usando id_inscripción)
+//          inscripcion.actualizarNota(3);
           
-          inscripcion.actualizarNota(3);
+          // OBTENER MATERIAS (usando id_alumno)
+          //inscripcion.obtenerMateriasInscriptas(2).forEach(System.out::println);
+          
+          // OBTENER MATERIAS NO INSCRIPTAS(usando id_alumno)
+          inscripcion.obtenerMateriasNoInscriptas(2).forEach(System.out::println);
+          
     }
 }
