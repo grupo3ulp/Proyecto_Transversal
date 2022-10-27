@@ -46,11 +46,11 @@ public class DataInscripcion {
 
         String query = "UPDATE `inscripcion` SET `nota`= ? WHERE id_inscripcion = ?";
         try {
+            i = new Inscripcion();
             PreparedStatement ps = conec.prepareStatement(query);
             ps.setFloat(1, i.getNota());
             ps.setInt(2, id_inscripcion);
 
-            
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
