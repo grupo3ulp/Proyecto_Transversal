@@ -78,7 +78,10 @@ public class main {
           //inscripcion.obtenerMateriasInscriptas(2).forEach(System.out::println);
           
           // OBTENER MATERIAS NO INSCRIPTAS(usando id_alumno)
-          inscripcion.obtenerMateriasNoInscriptas(2).forEach(System.out::println);
+//          inscripcion.obtenerMateriasNoInscriptas(2).forEach(System.out::println);
+
+          // OBTENER ALUMNOS INSCRIPTOS
+            inscripcion.obtenerAlumnosInscriptos(3).forEach(System.out::println);
           
     }
 }

@@ -1,5 +1,6 @@
 package persistencia;
 
+import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.Connection;
@@ -149,6 +150,35 @@ public class DataInscripcion {
                 materiaAux.setAnio(rs.getInt("año"));
                 materiaAux.setEstado(rs.getBoolean("estado"));
                 listaAux.add(materiaAux);
+            }
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+        }
+
+        return listaAux;
+    }
+
+    public ArrayList<Alumno> obtenerAlumnosInscriptos(int id_materia) {
+        ArrayList<Alumno> listaAux = new ArrayList();
+        String sql = "SELECT * FROM alumno a \n"
+                + "JOIN inscripcion l \n"
+                + "ON l.id_alumno = a.id_alumno\n"
+                + "WHERE l.id_materia = ?;\n"
+                + "";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, id_materia);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Alumno AlumnoAux = new Alumno();
+                AlumnoAux.setId_alumno(rs.getInt("id_alumno"));
+                AlumnoAux.setNombre(rs.getString("nombre"));
+                AlumnoAux.setApellido(rs.getString("apellido"));
+                AlumnoAux.setEstado(rs.getBoolean("estado"));
+                AlumnoAux.setDni(rs.getString("dni"));
+                AlumnoAux.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                listaAux.add(AlumnoAux);
             }
             conec.close();
         } catch (SQLException ex) {
