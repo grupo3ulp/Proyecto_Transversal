@@ -1,6 +1,6 @@
-package persistencia;
+package PT.Control;
 
-import entidades.Materia;
+import PT.Modelo.Materia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

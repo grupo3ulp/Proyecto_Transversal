@@ -1,4 +1,4 @@
-package entidades;
+package PT.Modelo;
 
 public class Materia  {
 

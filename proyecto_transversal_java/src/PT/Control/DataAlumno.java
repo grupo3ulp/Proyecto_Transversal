@@ -1,6 +1,6 @@
-package persistencia;
+package PT.Control;
 
-import entidades.Alumno;
+import PT.Modelo.Alumno;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
