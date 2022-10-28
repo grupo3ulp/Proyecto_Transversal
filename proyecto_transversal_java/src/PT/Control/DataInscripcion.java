@@ -37,7 +37,7 @@ public class DataInscripcion {
             }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DataInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
         }
 
         return i;
@@ -53,11 +53,17 @@ public class DataInscripcion {
             PreparedStatement ps = conec.prepareStatement(query);
             ps.setFloat(1, i.getNota());
             ps.setInt(2, id_inscripcion);
-
             ps.executeUpdate();
+
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+            } 
+            
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DataInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
         }
     }
 
@@ -68,9 +74,9 @@ public class DataInscripcion {
             PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, id);
             if (ps.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                JOptionPane.showMessageDialog(null, "La inscripcion fue eliminada correctamente");
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar la inscripcion");
             }
 
             conec.close();

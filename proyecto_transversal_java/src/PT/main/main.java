@@ -70,8 +70,7 @@ public class main {
         // BUSCAR INSCRIPCIÓN (usando id_inscripción)
             //DataInscripcion inscripcion = new DataInscripcion();
 //          inscripcion.obtenerInscripcion(2);
-//          System.out.println(inscripcion.obtenerInscripcion(2));
-          
+//          System.out.println(inscripcion.obtenerInscripcion(2));        
           
         // ACTUALIZAR NOTA (usando id_inscripción)
 //          inscripcion.actualizarNota(3);
@@ -84,6 +83,7 @@ public class main {
 
         // OBTENER ALUMNOS INSCRIPTOS
             //inscripcion.obtenerAlumnosInscriptos(3).forEach(System.out::println);
+            
           
     }
 }

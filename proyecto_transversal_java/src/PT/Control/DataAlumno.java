@@ -123,7 +123,7 @@ public class DataAlumno {
                     ps.setBoolean(5, alumnoAux.isEstado());
 
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
 
@@ -145,7 +145,7 @@ public class DataAlumno {
                     ps.setString(1, alumnoAux.getDni());
 
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
 
@@ -167,10 +167,9 @@ public class DataAlumno {
                     ps.setString(1, alumnoAux.getNombre());
 
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-
                     }
 
                     conec.close();
@@ -189,7 +188,7 @@ public class DataAlumno {
                     ps.setString(1, alumnoAux.getApellido());
 
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
 
@@ -211,7 +210,7 @@ public class DataAlumno {
                     ps.setDate(1, java.sql.Date.valueOf(alumnoAux.getFecha_nacimiento()));
 
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
 
@@ -232,7 +231,7 @@ public class DataAlumno {
                     ps.setBoolean(1, alumnoAux.isEstado());
 
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                     }
@@ -262,7 +261,7 @@ public class DataAlumno {
                 ps.setInt(1, id);
                 ps2.setInt(1, id);
                 if (ps.executeUpdate() > 0 || ps2.executeUpdate() > 0) {
-                    JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                 }

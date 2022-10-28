@@ -102,7 +102,7 @@ public class DataMateria {
                     ps.setBoolean(3, materiaAux.isEstado());
                     
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                     }
@@ -122,7 +122,7 @@ public class DataMateria {
                     ps.setString(1, materiaAux.getNombre());
                     
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                     }
@@ -142,7 +142,7 @@ public class DataMateria {
                     ps.setInt(1, materiaAux.getAnio());
                     
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                     }
@@ -162,7 +162,7 @@ public class DataMateria {
                     ps.setBoolean(1, materiaAux.isEstado());
                     
                     if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                     }
@@ -178,8 +178,8 @@ public class DataMateria {
         String sql = "DELETE FROM inscripcion WHERE id_materia=?";
         String sql2 = "DELETE FROM materia WHERE id_materia=?";
         
-        if((JOptionPane.showConfirmDialog(null, "Borara la "
-                 + "materia con id "+ id+" y todos los datos relacionados a este desea continuar?", "Confirmar Borrado",
+        if((JOptionPane.showConfirmDialog(null, "Borrará la "
+                 + "materia con id "+ id+" y todos los datos relacionados a este, ¿Desea continuar?", "Confirmar Borrado",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE))==0){ 
         try {
@@ -188,7 +188,7 @@ public class DataMateria {
                 ps.setInt(1, id);
                 ps2.setInt(1, id);
                 if (ps.executeUpdate() > 0 || ps2.executeUpdate() > 0) {
-                    JOptionPane.showMessageDialog(null, "El Registro fue modifico correctamente");
+                    JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
                 }
