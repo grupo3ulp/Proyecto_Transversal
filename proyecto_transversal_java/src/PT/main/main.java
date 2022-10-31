@@ -1,11 +1,15 @@
 package PT.main;
 
-import PT.Control.DataAlumno;
-import PT.Control.DataInscripcion;
+import PT.Gui.Menu;
 
 public class main {
 
     public static void main(String[] args) {
+        
+        Menu main=new Menu();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);    
+        
         
 // ------------------------------------------------------------
         // ------ PRUEBA DATA ALUMNO ----------

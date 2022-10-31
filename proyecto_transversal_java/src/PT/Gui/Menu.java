@@ -35,10 +35,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Materias = new javax.swing.JMenu();
         jmiAgregarMateria = new javax.swing.JMenuItem();
         jmiModificarMateria = new javax.swing.JMenuItem();
-        jmiEliminarMateria = new javax.swing.JMenuItem();
         jMenu_Alumnos = new javax.swing.JMenu();
         jmiAgregarAlumno = new javax.swing.JMenuItem();
-        jmiBajaAlumno = new javax.swing.JMenuItem();
         jmiModificarAlumno = new javax.swing.JMenuItem();
         jMenu_Inscripciones = new javax.swing.JMenu();
         jmiNuevaInscripcion = new javax.swing.JMenuItem();
@@ -71,15 +69,22 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jMenu_Materias.setText("Materias");
+        jMenu_Materias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu_MateriasMousePressed(evt);
+            }
+        });
 
         jmiAgregarMateria.setText("Agregar");
+        jmiAgregarMateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiAgregarMateriaMousePressed(evt);
+            }
+        });
         jMenu_Materias.add(jmiAgregarMateria);
 
-        jmiModificarMateria.setText("Modificar");
+        jmiModificarMateria.setText("Modificar / Dar de baja");
         jMenu_Materias.add(jmiModificarMateria);
-
-        jmiEliminarMateria.setText("Eliminar");
-        jMenu_Materias.add(jmiEliminarMateria);
 
         jMenuBar2.add(jMenu_Materias);
 
@@ -93,15 +98,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu_Alumnos.add(jmiAgregarAlumno);
 
-        jmiBajaAlumno.setText("Dar de baja");
-        jmiBajaAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiBajaAlumnoActionPerformed(evt);
-            }
-        });
-        jMenu_Alumnos.add(jmiBajaAlumno);
-
-        jmiModificarAlumno.setText("Modificar");
+        jmiModificarAlumno.setText("Modificar / Dar de baja");
         jMenu_Alumnos.add(jmiModificarAlumno);
 
         jMenuBar2.add(jMenu_Alumnos);
@@ -163,13 +160,19 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiAgregarAlumnoActionPerformed
 
-    private void jmiBajaAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBajaAlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmiBajaAlumnoActionPerformed
-
     private void jmiActualizarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiActualizarNotaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiActualizarNotaActionPerformed
+
+    private void jMenu_MateriasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_MateriasMousePressed
+        
+    }//GEN-LAST:event_jMenu_MateriasMousePressed
+
+    private void jmiAgregarMateriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiAgregarMateriaMousePressed
+        GUIAgregarMateria agregarMat = new GUIAgregarMateria();
+        agregarMat.setVisible(true);
+        jDesktopPaneMain.add(agregarMat);
+    }//GEN-LAST:event_jmiAgregarMateriaMousePressed
 
     /**
      * @param args the command line arguments
@@ -219,12 +222,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiActualizarNota;
     private javax.swing.JMenuItem jmiAgregarAlumno;
     private javax.swing.JMenuItem jmiAgregarMateria;
-    private javax.swing.JMenuItem jmiBajaAlumno;
     private javax.swing.JMenuItem jmiBuscarAlumno;
     private javax.swing.JMenuItem jmiBuscarInscripcion;
     private javax.swing.JMenuItem jmiBuscarMateria;
     private javax.swing.JMenuItem jmiEliminarInscripcion;
-    private javax.swing.JMenuItem jmiEliminarMateria;
     private javax.swing.JMenuItem jmiModificarAlumno;
     private javax.swing.JMenuItem jmiModificarMateria;
     private javax.swing.JMenuItem jmiMostrarAlumnos;
