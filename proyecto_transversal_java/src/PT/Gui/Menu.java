@@ -81,6 +81,11 @@ public class Menu extends javax.swing.JFrame {
                 jmiAgregarMateriaMousePressed(evt);
             }
         });
+        jmiAgregarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAgregarMateriaActionPerformed(evt);
+            }
+        });
         jMenu_Materias.add(jmiAgregarMateria);
 
         jmiModificarMateria.setText("Modificar / Dar de baja");
@@ -91,6 +96,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Alumnos.setText("Alumnos");
 
         jmiAgregarAlumno.setText("Agregar");
+        jmiAgregarAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiAgregarAlumnoMousePressed(evt);
+            }
+        });
         jmiAgregarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiAgregarAlumnoActionPerformed(evt);
@@ -165,7 +175,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiActualizarNotaActionPerformed
 
     private void jMenu_MateriasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_MateriasMousePressed
-        
+
     }//GEN-LAST:event_jMenu_MateriasMousePressed
 
     private void jmiAgregarMateriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiAgregarMateriaMousePressed
@@ -173,6 +183,16 @@ public class Menu extends javax.swing.JFrame {
         agregarMat.setVisible(true);
         jDesktopPaneMain.add(agregarMat);
     }//GEN-LAST:event_jmiAgregarMateriaMousePressed
+
+    private void jmiAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgregarMateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiAgregarMateriaActionPerformed
+
+    private void jmiAgregarAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiAgregarAlumnoMousePressed
+        GUIAgregarAlumno agregarAlum = new GUIAgregarAlumno();
+        agregarAlum.setVisible(true);
+        jDesktopPaneMain.add(agregarAlum);        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiAgregarAlumnoMousePressed
 
     /**
      * @param args the command line arguments
