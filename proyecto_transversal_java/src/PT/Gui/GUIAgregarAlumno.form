@@ -46,11 +46,7 @@
                   <Component id="jTFApellidoAlumno" alignment="0" pref="336" max="32767" attributes="0"/>
                   <Component id="jTFDNIAlumno" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLAnio1" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="dateChoser" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTFFechaAlumno" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="dateChoser" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
           </Group>
@@ -72,16 +68,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLAnio" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jTFApellidoAlumno" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLAnio1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="dateChoser" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jTFFechaAlumno" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jTFApellidoAlumno" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLAnio1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="dateChoser" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -165,8 +156,6 @@
       <Events>
         <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="dateChoserPropertyChange"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTFFechaAlumno">
     </Component>
   </SubComponents>
 </Form>

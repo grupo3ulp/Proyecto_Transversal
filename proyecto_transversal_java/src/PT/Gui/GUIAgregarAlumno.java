@@ -8,8 +8,9 @@ import PT.Control.DataAlumno;
 import PT.Modelo.Alumno;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.zone;
 
 /**
  *
@@ -45,7 +46,6 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         jTFDNIAlumno = new javax.swing.JTextField();
         jLAnio1 = new javax.swing.JLabel();
         dateChoser = new com.toedter.calendar.JDateChooser();
-        jTFFechaAlumno = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(508, 391));
 
@@ -124,10 +124,7 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                     .addComponent(jTFApellidoAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
                     .addComponent(jTFDNIAlumno)
                     .addComponent(jLAnio1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(dateChoser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFFechaAlumno)))
+                    .addComponent(dateChoser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
@@ -146,14 +143,11 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLAnio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTFApellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLAnio1)
-                        .addGap(27, 27, 27)
-                        .addComponent(dateChoser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTFFechaAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTFApellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLAnio1)
+                .addGap(27, 27, 27)
+                .addComponent(dateChoser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCancelar)
@@ -179,22 +173,25 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
     }                                         
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea guardar esta materia?");
+        int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea guardar esta alumno?");
         if (aux == 0) {
+            ZoneId z = ZoneId.of("America/Argentina/Cordoba");
             Alumno a = new Alumno();
             a.setDni(jTFDNIAlumno.getText());
             a.setNombre(jTFNombreAlumno.getText());
             a.setApellido(jTFApellidoAlumno.getText());
-            a.setFecha_nacimiento(LocalDate.of(dateChoser.getDate().getTime());
+            a.setFecha_nacimiento(dateChoser.getCalendar().getTime().toInstant().atZone(z));
             
 
             DataAlumno DA = new DataAlumno();
             DA.createAlumno(a);
-
+            
+            jTFDNIAlumno.setText("");
             jTFNombreAlumno.setText("");
             jTFApellidoAlumno.setText("");
             jBGuardar.setEnabled(false);
         } else if (aux == 1) {
+             jTFDNIAlumno.setText("");
             jTFNombreAlumno.setText("");
             jTFApellidoAlumno.setText("");
             jBGuardar.setEnabled(false);
@@ -206,7 +203,6 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
     }                                            
 
     private void dateChoserPropertyChange(java.beans.PropertyChangeEvent evt) {                                          
-
 
     }                                         
 
@@ -223,7 +219,6 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JTextField jTFApellidoAlumno;
     private javax.swing.JTextField jTFDNIAlumno;
-    private javax.swing.JTextField jTFFechaAlumno;
     private javax.swing.JTextField jTFNombreAlumno;
     // End of variables declaration                   
 }
