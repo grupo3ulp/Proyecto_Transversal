@@ -41,7 +41,6 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Inscripciones = new javax.swing.JMenu();
         jmiNuevaInscripcion = new javax.swing.JMenuItem();
         jmiEliminarInscripcion = new javax.swing.JMenuItem();
-        jmiActualizarNota = new javax.swing.JMenuItem();
         jMenu_Consultas = new javax.swing.JMenu();
         jmiBuscarAlumno = new javax.swing.JMenuItem();
         jmiBuscarMateria = new javax.swing.JMenuItem();
@@ -116,18 +115,25 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Inscripciones.setText("Inscripciones");
 
         jmiNuevaInscripcion.setText("Nueva inscripción");
-        jMenu_Inscripciones.add(jmiNuevaInscripcion);
-
-        jmiEliminarInscripcion.setText("Eliminar inscripción");
-        jMenu_Inscripciones.add(jmiEliminarInscripcion);
-
-        jmiActualizarNota.setText("Actualizar nota");
-        jmiActualizarNota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiActualizarNotaActionPerformed(evt);
+        jmiNuevaInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiNuevaInscripcionMousePressed(evt);
             }
         });
-        jMenu_Inscripciones.add(jmiActualizarNota);
+        jMenu_Inscripciones.add(jmiNuevaInscripcion);
+
+        jmiEliminarInscripcion.setText("Modificar/Dar de Baja");
+        jmiEliminarInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiEliminarInscripcionMousePressed(evt);
+            }
+        });
+        jmiEliminarInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEliminarInscripcionActionPerformed(evt);
+            }
+        });
+        jMenu_Inscripciones.add(jmiEliminarInscripcion);
 
         jMenuBar2.add(jMenu_Inscripciones);
 
@@ -170,10 +176,6 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiAgregarAlumnoActionPerformed
 
-    private void jmiActualizarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiActualizarNotaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmiActualizarNotaActionPerformed
-
     private void jMenu_MateriasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_MateriasMousePressed
 
     }//GEN-LAST:event_jMenu_MateriasMousePressed
@@ -193,6 +195,22 @@ public class Menu extends javax.swing.JFrame {
         agregarAlum.setVisible(true);
         jDesktopPaneMain.add(agregarAlum);        // TODO add your handling code here:
     }//GEN-LAST:event_jmiAgregarAlumnoMousePressed
+
+    private void jmiEliminarInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEliminarInscripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiEliminarInscripcionActionPerformed
+
+    private void jmiNuevaInscripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiNuevaInscripcionMousePressed
+         GUIAgregarInscripcion agregarinsc = new GUIAgregarInscripcion();
+        agregarinsc.setVisible(true);
+        jDesktopPaneMain.add(agregarinsc);
+    }//GEN-LAST:event_jmiNuevaInscripcionMousePressed
+
+    private void jmiEliminarInscripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiEliminarInscripcionMousePressed
+     GUIModificarInscripcion modInsc = new GUIModificarInscripcion();
+        modInsc.setVisible(true);
+        jDesktopPaneMain.add(modInsc);
+    }//GEN-LAST:event_jmiEliminarInscripcionMousePressed
 
     /**
      * @param args the command line arguments
@@ -239,7 +257,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_Consultas;
     private javax.swing.JMenu jMenu_Inscripciones;
     private javax.swing.JMenu jMenu_Materias;
-    private javax.swing.JMenuItem jmiActualizarNota;
     private javax.swing.JMenuItem jmiAgregarAlumno;
     private javax.swing.JMenuItem jmiAgregarMateria;
     private javax.swing.JMenuItem jmiBuscarAlumno;

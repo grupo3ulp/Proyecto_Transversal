@@ -76,18 +76,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nueva inscripci&#xf3;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiNuevaInscripcionMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiEliminarInscripcion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar inscripci&#xf3;n"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiActualizarNota">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Actualizar nota"/>
+                <Property name="text" type="java.lang.String" value="Modificar/Dar de Baja"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiActualizarNotaActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiEliminarInscripcionMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiEliminarInscripcionActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
