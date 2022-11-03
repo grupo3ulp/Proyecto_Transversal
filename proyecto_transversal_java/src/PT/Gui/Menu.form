@@ -72,14 +72,6 @@
             <Property name="text" type="java.lang.String" value="Inscripciones"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiNuevaInscripcion">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nueva inscripci&#xf3;n"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiNuevaInscripcionMousePressed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiEliminarInscripcion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar/Dar de Baja"/>

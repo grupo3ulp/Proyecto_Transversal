@@ -39,7 +39,6 @@ public class Menu extends javax.swing.JFrame {
         jmiAgregarAlumno = new javax.swing.JMenuItem();
         jmiModificarAlumno = new javax.swing.JMenuItem();
         jMenu_Inscripciones = new javax.swing.JMenu();
-        jmiNuevaInscripcion = new javax.swing.JMenuItem();
         jmiEliminarInscripcion = new javax.swing.JMenuItem();
         jMenu_Consultas = new javax.swing.JMenu();
         jmiBuscarAlumno = new javax.swing.JMenuItem();
@@ -113,14 +112,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar2.add(jMenu_Alumnos);
 
         jMenu_Inscripciones.setText("Inscripciones");
-
-        jmiNuevaInscripcion.setText("Nueva inscripción");
-        jmiNuevaInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmiNuevaInscripcionMousePressed(evt);
-            }
-        });
-        jMenu_Inscripciones.add(jmiNuevaInscripcion);
 
         jmiEliminarInscripcion.setText("Modificar/Dar de Baja");
         jmiEliminarInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,14 +191,8 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiEliminarInscripcionActionPerformed
 
-    private void jmiNuevaInscripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiNuevaInscripcionMousePressed
-         GUIAgregarInscripcion agregarinsc = new GUIAgregarInscripcion();
-        agregarinsc.setVisible(true);
-        jDesktopPaneMain.add(agregarinsc);
-    }//GEN-LAST:event_jmiNuevaInscripcionMousePressed
-
     private void jmiEliminarInscripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiEliminarInscripcionMousePressed
-     GUIModificarInscripcion modInsc = new GUIModificarInscripcion();
+        GUIModificarInscripcion modInsc = new GUIModificarInscripcion();
         modInsc.setVisible(true);
         jDesktopPaneMain.add(modInsc);
     }//GEN-LAST:event_jmiEliminarInscripcionMousePressed
@@ -267,6 +252,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiModificarMateria;
     private javax.swing.JMenuItem jmiMostrarAlumnos;
     private javax.swing.JMenuItem jmiMostrarMaterias;
-    private javax.swing.JMenuItem jmiNuevaInscripcion;
     // End of variables declaration//GEN-END:variables
 }

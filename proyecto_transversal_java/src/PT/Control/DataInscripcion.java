@@ -42,6 +42,29 @@ public class DataInscripcion {
 
         return i;
     }
+     public ArrayList<Inscripcion> obtenerTodasInscripciones() {
+
+        Inscripcion i = null;
+        ArrayList<Inscripcion>inscripciones=new ArrayList<>();
+        String query = "SELECT * FROM `inscripcion`"; //1
+        try {
+            PreparedStatement ps = conec.prepareStatement(query); //2
+
+            ResultSet rs = ps.executeQuery(); //3
+            while (rs.next()) { //4 Creo un objeto
+                i = new Inscripcion();
+                i.setId_inscripcion(rs.getInt("id_inscripcion"));
+                i.setId_alumno(rs.getInt("id_alumno"));
+                i.setId_materia(rs.getInt("id_materia"));
+                inscripciones.add(i);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+        }
+
+        return inscripciones;
+    }
 
     public void actualizarNota(int id_inscripcion) {
 
