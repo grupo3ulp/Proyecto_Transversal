@@ -180,7 +180,7 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
             a.setDni(jTFDNIAlumno.getText());
             a.setNombre(jTFNombreAlumno.getText());
             a.setApellido(jTFApellidoAlumno.getText());
-            a.setFecha_nacimiento(dateChoser.getCalendar().getTime().toInstant().atZone(z));
+//            a.setFecha_nacimiento(dateChoser.getCalendar().getTime().toInstant().atZone(z));
             
 
             DataAlumno DA = new DataAlumno();

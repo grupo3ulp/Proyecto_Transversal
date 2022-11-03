@@ -1,4 +1,3 @@
-
 package PT.Gui;
 
 import PT.Control.DataAlumno;
@@ -20,20 +19,17 @@ public class GUIAgregarInscripcion extends javax.swing.JInternalFrame {
      * Creates new form GUIAgregarInscripcion
      */
     public GUIAgregarInscripcion() {
-        DataAlumno dataAlumno= new DataAlumno();
-        DataMateria dataMateria =new DataMateria();
-        
+        DataAlumno dataAlumno = new DataAlumno();
+        DataMateria dataMateria = new DataMateria();
+
         initComponents();
         setResizable(false);
-                       
+
         for (Alumno alumno : dataAlumno.readAllAlumno()) {
-           
+
             jBoxAlumno.addItem(alumno);
         }
-        
-        for (Materia materia : dataMateria.readAllMateria()) {
-            jBoxMateria.addItem(materia);
-        }
+
     }
 
     /**
@@ -78,6 +74,11 @@ public class GUIAgregarInscripcion extends javax.swing.JInternalFrame {
 
         jBoxAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
         jBoxAlumno.setToolTipText("");
+        jBoxAlumno.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jBoxAlumnoItemStateChanged(evt);
+            }
+        });
         jBoxAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBoxAlumnoActionPerformed(evt);
@@ -133,21 +134,33 @@ public class GUIAgregarInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        DataInscripcion dataInscripcion=new DataInscripcion();
-        
+        DataInscripcion dataInscripcion = new DataInscripcion();
+
         int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea guardar esta inscripcion?");
         if (aux == 0) {
-           Inscripcion inscripcion=new Inscripcion();
-           inscripcion.setId_alumno(((Alumno)jBoxAlumno.getSelectedItem()).getId_alumno());
-           inscripcion.setId_materia(((Materia)jBoxMateria.getSelectedItem()).getId_materia());
-           dataInscripcion.crearInscripcion(inscripcion);            
-         
+            Inscripcion inscripcion = new Inscripcion();
+            inscripcion.setId_alumno(((Alumno) jBoxAlumno.getSelectedItem()).getId_alumno());
+            inscripcion.setId_materia(((Materia) jBoxMateria.getSelectedItem()).getId_materia());
+            dataInscripcion.crearInscripcion(inscripcion);
+
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBoxAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxAlumnoActionPerformed
-       
+        DataAlumno dataAlumno = new DataAlumno();
+        DataMateria dataMateria = new DataMateria();
+        DataInscripcion dataInscripcion = new DataInscripcion();
+        int id_alumno=((Alumno)jBoxAlumno.getSelectedItem()).getId_alumno();
+        jBoxMateria.removeAllItems();
+        for (Materia materia : dataInscripcion.obtenerMateriasNoInscriptas(id_alumno)) {
+            jBoxMateria.addItem(materia);
+        }        // TODO add your handling code here:
+        System.out.println("asaa");
     }//GEN-LAST:event_jBoxAlumnoActionPerformed
+
+    private void jBoxAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jBoxAlumnoItemStateChanged
+
+    }//GEN-LAST:event_jBoxAlumnoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
