@@ -80,7 +80,7 @@ public class DataAlumno {
 
     public ArrayList<Alumno> readAllAlumno() {
         ArrayList<Alumno> listaAux = new ArrayList();
-        String sql = "SELECT * FROM `alumno` WHERE estado=1";
+        String sql = "SELECT * FROM `alumno` WHERE estado=1 ORDER BY apellido";
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

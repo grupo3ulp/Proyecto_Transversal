@@ -12,6 +12,7 @@ import PT.Modelo.Inscripcion;
 import PT.Modelo.Materia;
 import PT.main.main;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import javax.xml.crypto.Data;
 
 /**
@@ -20,26 +21,22 @@ import javax.xml.crypto.Data;
  */
 public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
 
-    
+    DataMateria dataMateria = new DataMateria();
+    DataAlumno dataAlumno = new DataAlumno();
+    DefaultTableModel modeloTabla;
 
     public GUIModificarInscripcion() {
         initComponents();
         setResizable(false);
-        DataMateria dataMateria = new DataMateria();
-        DataAlumno dataAlumno = new DataAlumno();
-  
-
+        
         for (Alumno alumno : dataAlumno.readAllAlumno()) {
-       
-            jCBAlumno.addItem(alumno);
-            
-        }
-         for (Materia materia : dataMateria.readAllMateria()) {
 
-           
-            
+            jCBAlumno.addItem(alumno);
+
         }
-      
+        for (Materia materia : dataMateria.readAllMateria()) {
+
+        }
 
     }
 
@@ -342,7 +339,7 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
- 
+
 
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
