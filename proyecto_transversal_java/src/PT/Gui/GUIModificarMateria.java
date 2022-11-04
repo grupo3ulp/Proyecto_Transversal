@@ -7,6 +7,7 @@ package PT.Gui;
 
 import PT.Control.DataMateria;
 import PT.Modelo.Materia;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -86,6 +87,12 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jTFAnioMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFAnioMateriaKeyTyped(evt);
+            }
+        });
+
         jLIngreseId.setText("Elija la materia que desea modificar");
 
         jLTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -110,6 +117,13 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
         jBCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelar1ActionPerformed(evt);
+            }
+        });
+
+        jCBModificarMateria.setToolTipText("");
+        jCBModificarMateria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBModificarMateriaItemStateChanged(evt);
             }
         });
 
@@ -217,17 +231,35 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         DataMateria DM = new DataMateria();
-        DM.updateMateria(((Materia)jCBModificarMateria.getSelectedItem()), jTFNombreMateria.getText(), Integer.parseInt(jTFAnioMateria.getText()));
+        DM.updateMateria(((Materia) jCBModificarMateria.getSelectedItem()), jTFNombreMateria.getText(), Integer.parseInt(jTFAnioMateria.getText()));
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
         DataMateria DM = new DataMateria();
-        DM.deleteMateria(((Materia)jCBBajaMateria.getSelectedItem()).getId_materia());
+        DM.deleteMateria(((Materia) jCBBajaMateria.getSelectedItem()).getId_materia());
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jCBBajaMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBajaMateriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBBajaMateriaActionPerformed
+
+    private void jCBModificarMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBModificarMateriaItemStateChanged
+        jTFAnioMateria.setText(String.valueOf(((Materia) jCBModificarMateria.getSelectedItem()).getAnio()));
+        jTFNombreMateria.setText((((Materia) jCBModificarMateria.getSelectedItem()).getNombre()));
+
+    }//GEN-LAST:event_jCBModificarMateriaItemStateChanged
+
+    private void jTFAnioMateriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFAnioMateriaKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+        if (jTFAnioMateria.getText().length() > 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFAnioMateriaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

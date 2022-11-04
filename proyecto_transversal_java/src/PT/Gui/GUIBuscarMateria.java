@@ -8,6 +8,7 @@ package PT.Gui;
 import PT.Control.DataMateria;
 import PT.Modelo.Materia;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +48,12 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jRBBuscar = new javax.swing.JRadioButton();
 
+        jTFBuscarID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFBuscarIDKeyTyped(evt);
+            }
+        });
+
         jRBMostrarTodos.setText("Mostrar todas");
         jRBMostrarTodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -84,7 +91,7 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("BUSCAR MATERIA");
 
-        jRBBuscar.setText("Buscar por ID");
+        jRBBuscar.setText("Buscar por legajo");
         jRBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRBBuscarMousePressed(evt);
@@ -210,6 +217,18 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
     private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
         dispose();
     }//GEN-LAST:event_jBVolverActionPerformed
+
+    private void jTFBuscarIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscarIDKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+        if (jTFBuscarID.getText().length() > 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFBuscarIDKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

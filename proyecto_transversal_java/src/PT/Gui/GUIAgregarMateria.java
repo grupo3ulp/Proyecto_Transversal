@@ -54,6 +54,12 @@ public class GUIAgregarMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jTFAnioMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFAnioMateriaKeyTyped(evt);
+            }
+        });
+
         jBCancelar.setText("Cancelar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +160,18 @@ public class GUIAgregarMateria extends javax.swing.JInternalFrame {
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jTFAnioMateriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFAnioMateriaKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+        if (jTFAnioMateria.getText().length() > 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFAnioMateriaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

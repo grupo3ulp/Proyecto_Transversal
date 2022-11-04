@@ -92,6 +92,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFAnioMateria">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFAnioMateriaKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBCancelar">
       <Properties>
