@@ -6,8 +6,11 @@ package PT.Gui;
 
 import PT.Control.DataAlumno;
 import PT.Modelo.Alumno;
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.time.LocalDate;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,6 +23,8 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
      */
     public GUIModificarAlumno() {
         initComponents();
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) DateChooserMod.getDateEditor();
+        editor.setEditable(false);
         DataAlumno DA = new DataAlumno();
         for (Alumno alumno : DA.readAllAlumno()) {
             JComboModAlum.addItem(alumno);
@@ -62,6 +67,12 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Elija el alumno que desea modificar");
 
+        JComboModAlum.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JComboModAlumItemStateChanged(evt);
+            }
+        });
+
         jLabel3.setText("DNI");
 
         jLabel4.setText("Nombre");
@@ -75,16 +86,31 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
                 JTFModApellidoAlumActionPerformed(evt);
             }
         });
+        JTFModApellidoAlum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTFModApellidoAlumKeyTyped(evt);
+            }
+        });
 
         JTFModNombreAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFModNombreAlumActionPerformed(evt);
             }
         });
+        JTFModNombreAlum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTFModNombreAlumKeyTyped(evt);
+            }
+        });
 
         JTFDNIModAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFDNIModAlumActionPerformed(evt);
+            }
+        });
+        JTFDNIModAlum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTFDNIModAlumKeyTyped(evt);
             }
         });
 
@@ -249,6 +275,7 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
         JTFDNIModAlum.setText("");
         JTFModNombreAlum.setText("");
         JTFModApellidoAlum.setText("");
+        ((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText("");
     }//GEN-LAST:event_JBLimpiarModAActionPerformed
 
     private void JBCancelarModAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarModAActionPerformed
@@ -269,8 +296,42 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
 
     private void JBBorrarDelAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBorrarDelAActionPerformed
         DataAlumno DA = new DataAlumno();
-        DA.deleteAlumno(((Alumno)JComboDelAlum.getSelectedItem()).getId_alumno());
+        DA.deleteAlumno(((Alumno) JComboDelAlum.getSelectedItem()).getId_alumno());
     }//GEN-LAST:event_JBBorrarDelAActionPerformed
+
+    private void JComboModAlumItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboModAlumItemStateChanged
+        JTFDNIModAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getDni()));
+        JTFModNombreAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getNombre()));
+        JTFModApellidoAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getApellido()));
+        ((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
+    }//GEN-LAST:event_JComboModAlumItemStateChanged
+
+    private void JTFDNIModAlumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFDNIModAlumKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_JTFDNIModAlumKeyTyped
+
+    private void JTFModNombreAlumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFModNombreAlumKeyTyped
+        Character c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_JTFModNombreAlumKeyTyped
+
+    private void JTFModApellidoAlumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFModApellidoAlumKeyTyped
+        Character c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_JTFModApellidoAlumKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

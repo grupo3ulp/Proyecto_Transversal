@@ -6,9 +6,11 @@ package PT.Gui;
 
 import PT.Control.DataAlumno;
 import PT.Modelo.Alumno;
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.time.LocalDate;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +23,8 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
      */
     public GUIAgregarAlumno() {
         initComponents();
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) DateChooser.getDateEditor();
+        editor.setEditable(false);
     }
 
     /**
@@ -50,7 +54,25 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
 
         jLabel2.setText("DNI");
 
+        JTFDNIAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFDNIAlumnoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTFDNIAlumnoKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("Nombre");
+
+        JTFNombreAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFNombreAlumnoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTFNombreAlumnoKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Apellido");
 
@@ -59,8 +81,22 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                 JTFApellidoAlumnoActionPerformed(evt);
             }
         });
+        JTFApellidoAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFApellidoAlumnoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTFApellidoAlumnoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Fecha de nacimiento");
+
+        DateChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                DateChooserPropertyChange(evt);
+            }
+        });
 
         JBCancelarA.setText("Cancelar");
         JBCancelarA.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +113,7 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         });
 
         JBGuardarA.setText("Guardar");
+        JBGuardarA.setEnabled(false);
         JBGuardarA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBGuardarAActionPerformed(evt);
@@ -170,11 +207,13 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
             JTFNombreAlumno.setText("");
             JTFApellidoAlumno.setText("");
             JBGuardarA.setEnabled(false);
+            ((JTextField) DateChooser.getDateEditor().getUiComponent()).setText("");
         } else if (aux == 1) {
             JTFDNIAlumno.setText("");
             JTFNombreAlumno.setText("");
             JTFApellidoAlumno.setText("");
             JBGuardarA.setEnabled(false);
+            ((JTextField) DateChooser.getDateEditor().getUiComponent()).setText("");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_JBGuardarAActionPerformed
 
@@ -182,11 +221,65 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         JTFDNIAlumno.setText("");
         JTFNombreAlumno.setText("");
         JTFApellidoAlumno.setText("");
+        ((JTextField) DateChooser.getDateEditor().getUiComponent()).setText("");
+        habilitarBoton();
     }//GEN-LAST:event_JBLimpiarAActionPerformed
+
+    public void habilitarBoton() {
+        if (!JTFDNIAlumno.getText().isEmpty() && !JTFApellidoAlumno.getText().isEmpty()
+                && !JTFNombreAlumno.getText().isEmpty() && !((JTextField) DateChooser.getDateEditor().getUiComponent()).getText().isEmpty()) {
+            JBGuardarA.setEnabled(true);
+        } else {
+            JBGuardarA.setEnabled(false);
+        }
+    }
 
     private void JBCancelarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarAActionPerformed
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_JBCancelarAActionPerformed
+
+    private void JTFDNIAlumnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFDNIAlumnoKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_JTFDNIAlumnoKeyReleased
+
+    private void JTFNombreAlumnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFNombreAlumnoKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_JTFNombreAlumnoKeyReleased
+
+    private void JTFApellidoAlumnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFApellidoAlumnoKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_JTFApellidoAlumnoKeyReleased
+
+    private void DateChooserPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_DateChooserPropertyChange
+        habilitarBoton();
+    }//GEN-LAST:event_DateChooserPropertyChange
+
+    private void JTFDNIAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFDNIAlumnoKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_JTFDNIAlumnoKeyTyped
+
+    private void JTFNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFNombreAlumnoKeyTyped
+        Character c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_JTFNombreAlumnoKeyTyped
+
+    private void JTFApellidoAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFApellidoAlumnoKeyTyped
+        Character c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_JTFApellidoAlumnoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
