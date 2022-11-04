@@ -5,17 +5,27 @@
  */
 package PT.Gui;
 
+import PT.Control.DataMateria;
+import PT.Modelo.Materia;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Moon
  */
-public class GUIBuscarMateria extends javax.swing.JFrame {
+public class GUIBuscarMateria extends javax.swing.JInternalFrame {
+
+    private DefaultTableModel modelo;
 
     /**
-     * Creates new form GUIBuscarMateria
+     * Creates new form GUIBuscarMaterias
      */
     public GUIBuscarMateria() {
         initComponents();
+        jTFBuscarID.setEnabled(false);
+        modelo = new DefaultTableModel();
+        armarCabecera();
     }
 
     /**
@@ -27,28 +37,21 @@ public class GUIBuscarMateria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jRBBuscar = new javax.swing.JRadioButton();
         jTFBuscarID = new javax.swing.JTextField();
         jRBMostrarTodos = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTMateria = new javax.swing.JTable();
         jBBuscar = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("BUSCAR MATERIA");
-
-        jRBBuscar.setText("Buscar por ID");
-        jRBBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBBuscarActionPerformed(evt);
-            }
-        });
+        jLabel1 = new javax.swing.JLabel();
+        jRBBuscar = new javax.swing.JRadioButton();
 
         jRBMostrarTodos.setText("Mostrar todas");
+        jRBMostrarTodos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRBMostrarTodosMousePressed(evt);
+            }
+        });
 
         jTMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,7 +61,7 @@ public class GUIBuscarMateria extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Nombre", "Año"
+                "", ""
             }
         ));
         jScrollPane1.setViewportView(jTMateria);
@@ -71,18 +74,38 @@ public class GUIBuscarMateria extends javax.swing.JFrame {
         });
 
         jBVolver.setText("Volver");
+        jBVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVolverActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("BUSCAR MATERIA");
+
+        jRBBuscar.setText("Buscar por ID");
+        jRBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRBBuscarMousePressed(evt);
+            }
+        });
+        jRBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(45, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRBMostrarTodos)
@@ -95,8 +118,8 @@ public class GUIBuscarMateria extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jBBuscar)
-                            .addComponent(jBVolver))
-                        .addGap(17, 17, 17))))
+                            .addComponent(jBVolver))))
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,54 +137,76 @@ public class GUIBuscarMateria extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBVolver)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jRBMostrarTodosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBMostrarTodosMousePressed
+        jTFBuscarID.setText("");
+        jTFBuscarID.setEnabled(false);
+        jRBBuscar.setSelected(false);
+        borrarFilasTabla();
+        if (!jRBMostrarTodos.isSelected()) {
+            DataMateria DM = new DataMateria();
+            for (Materia materia : DM.readAllMateria()) {
+                modelo.addRow(new Object[]{materia.getNombre(), materia.getAnio()});
+            }
+        }
+    }//GEN-LAST:event_jRBMostrarTodosMousePressed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        borrarFilasTabla();
+        DataMateria DM = new DataMateria();
+        Materia auxiliar = new Materia();
+        auxiliar = DM.readMateria(Integer.parseInt(jTFBuscarID.getText()));
+        modelo.addRow(new Object[]{auxiliar.getNombre(), auxiliar.getAnio()});
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jRBBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBBuscarMousePressed
+        jTFBuscarID.setEnabled(true);
+        jRBMostrarTodos.setSelected(false);
+        borrarFilasTabla();
+
+        if (jRBBuscar.isSelected()) {
+            jTFBuscarID.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_jRBBuscarMousePressed
+
+    private void armarCabecera() {
+        ArrayList<Object> columnas = new ArrayList();
+        columnas.add("Nombre");
+        columnas.add("Año");
+
+        for (Object columna : columnas) {
+            modelo.addColumn(columna);
+        }
+
+        jTMateria.setModel(modelo);
+    }
+
+    private void borrarFilasTabla() {
+        if (modelo != null) {
+            int a = modelo.getRowCount() - 1;
+
+            for (int i = a; i >= 0; i--) {
+                modelo.removeRow(i);
+            }
+        }
+
+    }
+
+
     private void jRBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBBuscarActionPerformed
 
-    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBBuscarActionPerformed
+    private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBVolverActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIBuscarMateria().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
