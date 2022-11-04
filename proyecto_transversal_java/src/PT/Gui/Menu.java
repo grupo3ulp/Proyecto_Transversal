@@ -110,6 +110,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Alumnos.add(jmiAgregarAlumno);
 
         jmiModificarAlumno.setText("Modificar / Dar de baja");
+        jmiModificarAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiModificarAlumnoMousePressed(evt);
+            }
+        });
         jMenu_Alumnos.add(jmiModificarAlumno);
 
         jMenuBar2.add(jMenu_Alumnos);
@@ -232,6 +237,12 @@ public class Menu extends javax.swing.JFrame {
         buscarInscripcion.setVisible(true);
         jDesktopPaneMain.add(buscarInscripcion);
     }//GEN-LAST:event_jmiBuscarInscripcionMousePressed
+
+    private void jmiModificarAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiModificarAlumnoMousePressed
+        GUIModificarAlumno modAlum = new GUIModificarAlumno();
+        modAlum.setVisible(true);
+        jDesktopPaneMain.add(modAlum);
+    }//GEN-LAST:event_jmiModificarAlumnoMousePressed
 
     /**
      * @param args the command line arguments

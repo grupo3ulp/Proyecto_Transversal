@@ -104,23 +104,19 @@ public class DataAlumno {
         return listaAux;
     }
 
-    public void updateAlumno(int id, Alumno alumnoAux, int dato) {
+    public void updateAlumno(Alumno alumnoAux, String dni, String nombre, String apellido, Date fecha) {
         String sql = "";
-
-        switch (dato) {
-            case 1:
-                sql = "UPDATE `alumno` SET `dni`=?,`nombre`=?,`apellido`=?,`fecha_nacimiento`=?"
-                        + ",`estado`=? WHERE id_alumno=?";
+                sql = "UPDATE `alumno` SET `id_alumno`=?,`dni`=?,`nombre`=?,`apellido`=?,`fecha_nacimiento`=?"
+                        + " WHERE id_alumno=?";
                 try {
                     PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(6, id);
-                    ResultSet rs = ps.getGeneratedKeys();
 
-                    ps.setString(1, alumnoAux.getDni());
-                    ps.setString(2, alumnoAux.getNombre());
-                    ps.setString(3, alumnoAux.getApellido());
-                    ps.setDate(4, java.sql.Date.valueOf(alumnoAux.getFecha_nacimiento()));
-                    ps.setBoolean(5, alumnoAux.isEstado());
+                    ps.setInt(1, alumnoAux.getId_alumno());
+                    ps.setString(2, dni);
+                    ps.setString(3, nombre);
+                    ps.setString(4, apellido);
+                    ps.setDate(5, fecha);
+                    ps.setInt(6, alumnoAux.getId_alumno());
 
                     if (ps.executeUpdate() > 0) {
                         JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
@@ -134,116 +130,7 @@ public class DataAlumno {
                     JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
 
                 }
-                break;
-            case 2:
-                sql = "UPDATE `alumno` SET `dni`=? WHERE id_alumno=?";
-                try {
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-
-                    ps.setString(1, alumnoAux.getDni());
-
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-
-                    }
-
-                    conec.close();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-                }
-                break;
-            case 3:
-                sql = "UPDATE `alumno` SET `nombre`=? WHERE id_alumno=?";
-                try {
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-
-                    ps.setString(1, alumnoAux.getNombre());
-
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-                    }
-
-                    conec.close();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-                }
-                break;
-            case 4:
-                sql = "UPDATE `alumno` SET `apellido`=? WHERE id_alumno=?";
-                try {
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-
-                    ps.setString(1, alumnoAux.getApellido());
-
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-
-                    }
-
-                    conec.close();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-                }
-                break;
-            case 5:
-                sql = "UPDATE `alumno` SET `fecha_nacimiento`=? WHERE id_alumno=?";
-                try {
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-
-                    ps.setDate(1, java.sql.Date.valueOf(alumnoAux.getFecha_nacimiento()));
-
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-
-                    }
-
-                    conec.close();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-                }
-                break;
-            case 6:
-                sql = "UPDATE `alumno` SET `estado`=? WHERE id_alumno=?";
-                try {
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-                    ps.setBoolean(1, alumnoAux.isEstado());
-
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-                    }
-
-                    conec.close();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-                }
-
-                break;
-        }
+        
 
     }
 

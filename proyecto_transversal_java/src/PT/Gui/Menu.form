@@ -67,6 +67,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar / Dar de baja"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiModificarAlumnoMousePressed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

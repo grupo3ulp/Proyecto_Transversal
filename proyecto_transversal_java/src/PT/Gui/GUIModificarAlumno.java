@@ -4,6 +4,11 @@
  */
 package PT.Gui;
 
+import PT.Control.DataAlumno;
+import PT.Modelo.Alumno;
+import java.time.LocalDate;
+import java.util.Calendar;
+
 /**
  *
  * @author dante
@@ -15,6 +20,11 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
      */
     public GUIModificarAlumno() {
         initComponents();
+        DataAlumno DA = new DataAlumno();
+        for (Alumno alumno : DA.readAllAlumno()) {
+            JComboModAlum.addItem(alumno);
+            JComboDelAlum.addItem(alumno);
+        }
     }
 
     /**
@@ -27,62 +37,94 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jBCancelar = new javax.swing.JButton();
-        jCBBajaMateria = new javax.swing.JComboBox<>();
-        jBLimpiar = new javax.swing.JButton();
-        jBBorrar = new javax.swing.JButton();
-        jBGuardar = new javax.swing.JButton();
-        jBCancelar1 = new javax.swing.JButton();
-        jLTitulo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        JComboModAlum = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        JTFModApellidoAlum = new javax.swing.JTextField();
+        JTFModNombreAlum = new javax.swing.JTextField();
+        JTFDNIModAlum = new javax.swing.JTextField();
+        DateChooserMod = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
-        jLNombre = new javax.swing.JLabel();
-        jCBModificarMateria = new javax.swing.JComboBox<>();
-        jLAnio = new javax.swing.JLabel();
-        jTFNombreMateria = new javax.swing.JTextField();
-        jLIngreseId = new javax.swing.JLabel();
-        jLTitulo1 = new javax.swing.JLabel();
-        jLNombre1 = new javax.swing.JLabel();
-        jLAnio1 = new javax.swing.JLabel();
-        jTFNombreMateria1 = new javax.swing.JTextField();
-        jTFAnioMateria1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        JComboDelAlum = new javax.swing.JComboBox<>();
+        JBCancelarModA = new javax.swing.JButton();
+        JBLimpiarModA = new javax.swing.JButton();
+        JBGuardarModA = new javax.swing.JButton();
+        JBCancelarDelA = new javax.swing.JButton();
+        JBBorrarDelA = new javax.swing.JButton();
 
-        jLabel1.setText("Elija la materia que desea eliminar");
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Modificar Alumno");
 
-        jBCancelar.setText("Cancelar");
+        jLabel2.setText("Elija el alumno que desea modificar");
 
-        jBLimpiar.setText("Limpiar");
+        jLabel3.setText("DNI");
 
-        jBBorrar.setText("Borrar");
+        jLabel4.setText("Nombre");
 
-        jBGuardar.setText("Guardar");
+        jLabel5.setText("Apellido");
 
-        jBCancelar1.setText("Cancelar");
+        jLabel6.setText("Fecha de nacimiento");
 
-        jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLTitulo.setText("MODIFICAR ALUMNO");
-
-        jLNombre.setText("Apellido");
-
-        jLAnio.setText("Fecha");
-
-        jTFNombreMateria.addActionListener(new java.awt.event.ActionListener() {
+        JTFModApellidoAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombreMateriaActionPerformed(evt);
+                JTFModApellidoAlumActionPerformed(evt);
             }
         });
 
-        jLIngreseId.setText("Ingrese el número de legajo del alumno que desea modificar");
-
-        jLTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLTitulo1.setText("DAR DE BAJA ALUMNO");
-
-        jLNombre1.setText("DNI");
-
-        jLAnio1.setText("Nombre");
-
-        jTFNombreMateria1.addActionListener(new java.awt.event.ActionListener() {
+        JTFModNombreAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombreMateria1ActionPerformed(evt);
+                JTFModNombreAlumActionPerformed(evt);
+            }
+        });
+
+        JTFDNIModAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFDNIModAlumActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setText("Dar de baja alumno");
+
+        jLabel8.setText("Elija el alumno que desea dar de baja");
+
+        JBCancelarModA.setText("Cancelar");
+        JBCancelarModA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarModAActionPerformed(evt);
+            }
+        });
+
+        JBLimpiarModA.setText("Limpiar");
+        JBLimpiarModA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBLimpiarModAActionPerformed(evt);
+            }
+        });
+
+        JBGuardarModA.setText("Guardar");
+        JBGuardarModA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGuardarModAActionPerformed(evt);
+            }
+        });
+
+        JBCancelarDelA.setText("Cancelar");
+        JBCancelarDelA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarDelAActionPerformed(evt);
+            }
+        });
+
+        JBBorrarDelA.setText("Borrar");
+        JBBorrarDelA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBBorrarDelAActionPerformed(evt);
             }
         });
 
@@ -90,121 +132,167 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLTitulo)
-                        .addGap(146, 146, 146))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLNombre1)
-                            .addComponent(jLAnio1)
-                            .addComponent(jLNombre)
-                            .addComponent(jLAnio)
-                            .addComponent(jTFNombreMateria)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(84, 84, 84)
+                            .addComponent(JBCancelarModA)
+                            .addGap(115, 115, 115)
+                            .addComponent(JBLimpiarModA)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JBGuardarModA))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(63, 63, 63)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(JComboModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(JTFDNIModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel6))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(DateChooserMod, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                                        .addComponent(JTFModNombreAlum)
+                                        .addComponent(JTFModApellidoAlum))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(JBCancelarDelA)
+                            .addComponent(jLabel8))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jLTitulo1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jBCancelar1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBBorrar)
-                                .addGap(31, 31, 31))
+                                .addGap(34, 34, 34)
+                                .addComponent(JComboDelAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jCBBajaMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jBCancelar)
-                                .addGap(40, 40, 40)
-                                .addComponent(jBLimpiar)
-                                .addGap(42, 42, 42)
-                                .addComponent(jBGuardar))
-                            .addComponent(jLIngreseId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCBModificarMateria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTFNombreMateria1)
-                            .addComponent(jTFAnioMateria1))
-                        .addGap(67, 67, 67))))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(163, 163, 163)
+                                .addComponent(JBBorrarDelA)))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(jLIngreseId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCBModificarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLNombre1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFNombreMateria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLAnio1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTFAnioMateria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLAnio)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCancelar)
-                    .addComponent(jBLimpiar)
-                    .addComponent(jBGuardar))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLTitulo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCBBajaMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(JComboModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addComponent(JTFDNIModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(JTFModNombreAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(JTFModApellidoAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(DateChooserMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBBorrar)
-                    .addComponent(jBCancelar1))
-                .addGap(17, 17, 17))
+                    .addComponent(JBCancelarModA)
+                    .addComponent(JBLimpiarModA)
+                    .addComponent(JBGuardarModA))
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(JComboDelAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBCancelarDelA)
+                    .addComponent(JBBorrarDelA))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTFNombreMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreMateriaActionPerformed
+    private void JTFModNombreAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFModNombreAlumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombreMateriaActionPerformed
+    }//GEN-LAST:event_JTFModNombreAlumActionPerformed
 
-    private void jTFNombreMateria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreMateria1ActionPerformed
+    private void JTFDNIModAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFDNIModAlumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombreMateria1ActionPerformed
+    }//GEN-LAST:event_JTFDNIModAlumActionPerformed
+
+    private void JTFModApellidoAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFModApellidoAlumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFModApellidoAlumActionPerformed
+
+    private void JBLimpiarModAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimpiarModAActionPerformed
+        JTFDNIModAlum.setText("");
+        JTFModNombreAlum.setText("");
+        JTFModApellidoAlum.setText("");
+    }//GEN-LAST:event_JBLimpiarModAActionPerformed
+
+    private void JBCancelarModAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarModAActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_JBCancelarModAActionPerformed
+
+    private void JBCancelarDelAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarDelAActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_JBCancelarDelAActionPerformed
+
+    private void JBGuardarModAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarModAActionPerformed
+        DataAlumno DA = new DataAlumno();
+        int d = DateChooserMod.getCalendar().get(Calendar.DAY_OF_MONTH);
+        int m = DateChooserMod.getCalendar().getTime().getMonth() + 1;
+        int an = DateChooserMod.getCalendar().getTime().getYear() + 1900;
+        DA.updateAlumno(((Alumno) JComboModAlum.getSelectedItem()), JTFModApellidoAlum.getText(), JTFModNombreAlum.getText(), JTFModApellidoAlum.getText(), java.sql.Date.valueOf(LocalDate.of(an, m, d)));// TODO add your handling code here:
+    }//GEN-LAST:event_JBGuardarModAActionPerformed
+
+    private void JBBorrarDelAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBorrarDelAActionPerformed
+        DataAlumno DA = new DataAlumno();
+        DA.deleteAlumno(((Alumno)JComboDelAlum.getSelectedItem()).getId_alumno());
+    }//GEN-LAST:event_JBBorrarDelAActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBBorrar;
-    private javax.swing.JButton jBCancelar;
-    private javax.swing.JButton jBCancelar1;
-    private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jBLimpiar;
-    private javax.swing.JComboBox<String> jCBBajaMateria;
-    private javax.swing.JComboBox<String> jCBModificarMateria;
-    private javax.swing.JLabel jLAnio;
-    private javax.swing.JLabel jLAnio1;
-    private javax.swing.JLabel jLIngreseId;
-    private javax.swing.JLabel jLNombre;
-    private javax.swing.JLabel jLNombre1;
-    private javax.swing.JLabel jLTitulo;
-    private javax.swing.JLabel jLTitulo1;
+    private com.toedter.calendar.JDateChooser DateChooserMod;
+    private javax.swing.JButton JBBorrarDelA;
+    private javax.swing.JButton JBCancelarDelA;
+    private javax.swing.JButton JBCancelarModA;
+    private javax.swing.JButton JBGuardarModA;
+    private javax.swing.JButton JBLimpiarModA;
+    private javax.swing.JComboBox<Alumno> JComboDelAlum;
+    private javax.swing.JComboBox<Alumno> JComboModAlum;
+    private javax.swing.JTextField JTFDNIModAlum;
+    private javax.swing.JTextField JTFModApellidoAlum;
+    private javax.swing.JTextField JTFModNombreAlum;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTFAnioMateria1;
-    private javax.swing.JTextField jTFNombreMateria;
-    private javax.swing.JTextField jTFNombreMateria1;
     // End of variables declaration//GEN-END:variables
 }
