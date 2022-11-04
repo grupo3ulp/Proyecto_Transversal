@@ -5,17 +5,28 @@
  */
 package PT.Gui;
 
+import PT.Control.DataAlumno;
+import PT.Modelo.Alumno;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Moon
  */
 public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
+    
+    private DefaultTableModel modelo;
 
     /**
      * Creates new form GUIBuscarAlumnos
      */
     public GUIBuscarAlumno() {
         initComponents();
+        jBBuscar.setEnabled(false); 
+        jTFBuscarID.setEnabled(false); 
+        modelo = new DefaultTableModel();
+        armarCabecera();
     }
 
     /**
@@ -57,11 +68,21 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
         });
 
         jBVolver.setText("Volver");
+        jBVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVolverActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("BUSCAR ALUMNO");
 
         jRBBuscar.setText("Buscar por ID");
+        jRBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRBBuscarMousePressed(evt);
+            }
+        });
         jRBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBBuscarActionPerformed(evt);
@@ -69,6 +90,11 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
         });
 
         jRBMostrarTodos.setText("Mostrar todos");
+        jRBMostrarTodos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRBMostrarTodosMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,14 +145,72 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        // TODO add your handling code here:
+        borrarFilasTabla(); 
+        DataAlumno DM = new DataAlumno();
+        Alumno auxiliar = new Alumno(); 
+        auxiliar = DM.readAlumno(Integer.parseInt(jTFBuscarID.getText())); 
+        modelo.addRow(new Object[]{auxiliar.getDni(), auxiliar.getNombre(), auxiliar.getApellido(), auxiliar.getFecha_nacimiento()}); 
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jRBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBBuscarActionPerformed
 
+    private void jRBMostrarTodosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBMostrarTodosMousePressed
+        jTFBuscarID.setText(""); 
+        jTFBuscarID.setEnabled(false); 
+        jRBBuscar.setSelected(false); 
+        borrarFilasTabla();
+        if (!jRBMostrarTodos.isSelected()) { 
+            DataAlumno DA = new DataAlumno();
+            for (Alumno alumno : DA.readAllAlumno()) {
+                modelo.addRow(new Object[]{alumno.getDni(), alumno.getNombre(), alumno.getApellido(), alumno.getFecha_nacimiento()});
+            }
+        }
+    }//GEN-LAST:event_jRBMostrarTodosMousePressed
 
+    private void jRBBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBBuscarMousePressed
+        jTFBuscarID.setEnabled(true); 
+        jBBuscar.setEnabled(true); 
+        jRBMostrarTodos.setSelected(false); 
+        borrarFilasTabla(); 
+
+        if (jRBBuscar.isSelected()) {
+            jTFBuscarID.setEnabled(false); 
+            jBBuscar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRBBuscarMousePressed
+
+    private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBVolverActionPerformed
+
+
+    private void armarCabecera() {
+        ArrayList<Object> columnas = new ArrayList();
+        columnas.add("DNI");
+        columnas.add("Nombre");
+        columnas.add("Apellido");
+        columnas.add("Fecha de nacimiento");
+
+        for (Object columna : columnas) {
+            modelo.addColumn(columna);
+        }
+
+        jTAlumnos.setModel(modelo);
+    }
+    
+    private void borrarFilasTabla() {
+        if (modelo != null) {
+            int a = modelo.getRowCount() -1;
+
+            for (int i = a; i >= 0; i--) {
+                modelo.removeRow(i);
+            }
+        }
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBVolver;

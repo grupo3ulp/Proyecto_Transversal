@@ -106,6 +106,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBVolverActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -120,6 +123,7 @@
         <Property name="text" type="java.lang.String" value="Buscar por ID"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBBuscarMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRBBuscarActionPerformed"/>
       </Events>
     </Component>
@@ -129,6 +133,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mostrar todos"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBMostrarTodosMousePressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
