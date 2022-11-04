@@ -87,6 +87,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Materias.add(jmiAgregarMateria);
 
         jmiModificarMateria.setText("Modificar / Dar de baja");
+        jmiModificarMateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiModificarMateriaMousePressed(evt);
+            }
+        });
         jMenu_Materias.add(jmiModificarMateria);
 
         jMenuBar2.add(jMenu_Materias);
@@ -196,6 +201,12 @@ public class Menu extends javax.swing.JFrame {
         modInsc.setVisible(true);
         jDesktopPaneMain.add(modInsc);
     }//GEN-LAST:event_jmiEliminarInscripcionMousePressed
+
+    private void jmiModificarMateriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiModificarMateriaMousePressed
+        GUIModificarMateria modMat = new GUIModificarMateria();
+        modMat.setVisible(true);
+        jDesktopPaneMain.add(modMat);
+    }//GEN-LAST:event_jmiModificarMateriaMousePressed
 
     /**
      * @param args the command line arguments

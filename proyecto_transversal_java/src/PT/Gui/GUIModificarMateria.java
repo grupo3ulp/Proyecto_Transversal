@@ -5,6 +5,9 @@
  */
 package PT.Gui;
 
+import PT.Control.DataMateria;
+import PT.Modelo.Materia;
+
 /**
  *
  * @author Moon
@@ -16,6 +19,11 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
      */
     public GUIModificarMateria() {
         initComponents();
+        DataMateria DM = new DataMateria();
+        for (Materia materia : DM.readAllMateria()) {
+            jCBModificarMateria.addItem(materia);
+            jCBBajaMateria.addItem(materia);
+        }
     }
 
     /**
@@ -45,10 +53,25 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
         jCBModificarMateria = new javax.swing.JComboBox<>();
 
         jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
 
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLTitulo.setText("MODIFICAR MATERIA");
@@ -63,16 +86,32 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
             }
         });
 
-        jLIngreseId.setText("Ingrese el número de legajo de la materia que desea modificar");
+        jLIngreseId.setText("Elija la materia que desea modificar");
 
         jLTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLTitulo1.setText("DAR DE BAJA MATERIA");
 
         jLabel1.setText("Elija la materia que desea eliminar");
 
+        jCBBajaMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBBajaMateriaActionPerformed(evt);
+            }
+        });
+
         jBBorrar.setText("Borrar");
+        jBBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBorrarActionPerformed(evt);
+            }
+        });
 
         jBCancelar1.setText("Cancelar");
+        jBCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +121,7 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 72, Short.MAX_VALUE)
+                        .addGap(0, 78, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLTitulo)
@@ -163,6 +202,33 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNombreMateriaActionPerformed
 
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        jTFAnioMateria.setText("");
+        jTFNombreMateria.setText("");
+    }//GEN-LAST:event_jBLimpiarActionPerformed
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelar1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelar1ActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        DataMateria DM = new DataMateria();
+        DM.updateMateria(((Materia)jCBModificarMateria.getSelectedItem()), jTFNombreMateria.getText(), Integer.parseInt(jTFAnioMateria.getText()));
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
+        DataMateria DM = new DataMateria();
+        DM.deleteMateria(((Materia)jCBBajaMateria.getSelectedItem()).getId_materia());
+    }//GEN-LAST:event_jBBorrarActionPerformed
+
+    private void jCBBajaMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBajaMateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBBajaMateriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBorrar;
@@ -170,8 +236,8 @@ public class GUIModificarMateria extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBCancelar1;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
-    private javax.swing.JComboBox<String> jCBBajaMateria;
-    private javax.swing.JComboBox<String> jCBModificarMateria;
+    private javax.swing.JComboBox<Materia> jCBBajaMateria;
+    private javax.swing.JComboBox<Materia> jCBModificarMateria;
     private javax.swing.JLabel jLAnio;
     private javax.swing.JLabel jLIngreseId;
     private javax.swing.JLabel jLNombre;

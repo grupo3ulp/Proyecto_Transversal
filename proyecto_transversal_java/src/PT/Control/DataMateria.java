@@ -85,104 +85,36 @@ public class DataMateria {
         return listaAux;
     }
 
-    public void updateMateria(int id, Materia materiaAux, int dato) {
-        String sql = "";
+    public void updateMateria(Materia materiaAux, String nombre, int anio) {
+        String sql = "UPDATE `materia` SET `id_materia`=?,`nombre`=?,`año`=? WHERE id_materia=?";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            
+            ps.setInt(1, materiaAux.getId_materia());
+            ps.setString(2, nombre);
+            ps.setInt(3, anio);
+            ps.setInt(4, materiaAux.getId_materia());
 
-        switch (dato) {
-            case 1:
-                sql = sql = "UPDATE `materia` SET `nombre`=?,`año`=?"
-                        + ",`estado`=? WHERE id_materia=?";
-                try {
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(4, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-
-                    ps.setString(1, materiaAux.getNombre());
-                    ps.setInt(2, materiaAux.getAnio());
-                    ps.setBoolean(3, materiaAux.isEstado());
-                    
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-                    }
-                    conec.close();
-                }catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-                }
-                break;
-                
-            case 2:
-                sql = "UPDATE `materia` SET `nombre`=? WHERE id_materia=?";
-                try{
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-                    
-                    ps.setString(1, materiaAux.getNombre());
-                    
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-                    }
-                    conec.close();
-                }catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-                }
-                break;
-                
-            case 3:
-                sql = "UPDATE `materia` SET `año`=? WHERE id_materia=?";
-                try{
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-                    
-                    ps.setInt(1, materiaAux.getAnio());
-                    
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-                    }
-                    conec.close();
-                }catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-                }
-                break;
-                
-            case 4:
-                sql = "UPDATE `materia` SET `estado`=? WHERE id_materia=?";
-                try{
-                    PreparedStatement ps = conec.prepareStatement(sql);
-                    ps.setInt(2, id);
-                    ResultSet rs = ps.getGeneratedKeys();
-                    
-                    ps.setBoolean(1, materiaAux.isEstado());
-                    
-                    if (ps.executeUpdate() > 0) {
-                        JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-                    }
-                    conec.close();
-                }catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-                }
-                break;
-                }
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+            }
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
         }
-    
-    public void deleteMateria(int id){
+    }
+
+    public void deleteMateria(int id) {
         String sql = "DELETE FROM inscripcion WHERE id_materia=?";
         String sql2 = "DELETE FROM materia WHERE id_materia=?";
-        
-        if((JOptionPane.showConfirmDialog(null, "Borrará la "
-                 + "materia con id "+ id+" y todos los datos relacionados a este, ¿Desea continuar?", "Confirmar Borrado",
+
+        if ((JOptionPane.showConfirmDialog(null, "Borrará la "
+                + "materia con id " + id + " y todos los datos relacionados a este, ¿Desea continuar?", "Confirmar Borrado",
                 JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE))==0){ 
-        try {
+                JOptionPane.QUESTION_MESSAGE)) == 0) {
+            try {
                 PreparedStatement ps = conec.prepareStatement(sql);
                 PreparedStatement ps2 = conec.prepareStatement(sql2);
                 ps.setInt(1, id);
@@ -200,5 +132,4 @@ public class DataMateria {
             }
         }
     }
-    }
-
+}
