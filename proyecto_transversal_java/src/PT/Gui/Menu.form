@@ -95,26 +95,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar alumno"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiBuscarAlumnoMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiBuscarMateria">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar materia"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiBuscarMateriaMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiBuscarInscripcion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Inscripci&#xf3;n"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiMostrarAlumnos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar alumnos"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiMostrarMaterias">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar materias"/>
-              </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmiBuscarInscripcionMousePressed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -44,8 +44,6 @@ public class Menu extends javax.swing.JFrame {
         jmiBuscarAlumno = new javax.swing.JMenuItem();
         jmiBuscarMateria = new javax.swing.JMenuItem();
         jmiBuscarInscripcion = new javax.swing.JMenuItem();
-        jmiMostrarAlumnos = new javax.swing.JMenuItem();
-        jmiMostrarMaterias = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -136,19 +134,28 @@ public class Menu extends javax.swing.JFrame {
         jMenu_Consultas.setText("Consultas");
 
         jmiBuscarAlumno.setText("Buscar alumno");
+        jmiBuscarAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiBuscarAlumnoMousePressed(evt);
+            }
+        });
         jMenu_Consultas.add(jmiBuscarAlumno);
 
         jmiBuscarMateria.setText("Buscar materia");
+        jmiBuscarMateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiBuscarMateriaMousePressed(evt);
+            }
+        });
         jMenu_Consultas.add(jmiBuscarMateria);
 
         jmiBuscarInscripcion.setText("Buscar Inscripción");
+        jmiBuscarInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmiBuscarInscripcionMousePressed(evt);
+            }
+        });
         jMenu_Consultas.add(jmiBuscarInscripcion);
-
-        jmiMostrarAlumnos.setText("Mostrar alumnos");
-        jMenu_Consultas.add(jmiMostrarAlumnos);
-
-        jmiMostrarMaterias.setText("Mostrar materias");
-        jMenu_Consultas.add(jmiMostrarMaterias);
 
         jMenuBar2.add(jMenu_Consultas);
 
@@ -208,6 +215,24 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPaneMain.add(modMat);
     }//GEN-LAST:event_jmiModificarMateriaMousePressed
 
+    private void jmiBuscarAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiBuscarAlumnoMousePressed
+        GUIBuscarAlumno buscarAlumno = new GUIBuscarAlumno();
+        buscarAlumno.setVisible(true);
+        jDesktopPaneMain.add(buscarAlumno);
+    }//GEN-LAST:event_jmiBuscarAlumnoMousePressed
+
+    private void jmiBuscarMateriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiBuscarMateriaMousePressed
+        GUIBuscarMateria buscarMateria = new GUIBuscarMateria();
+        buscarMateria.setVisible(true);
+        jDesktopPaneMain.add(buscarMateria);
+    }//GEN-LAST:event_jmiBuscarMateriaMousePressed
+
+    private void jmiBuscarInscripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiBuscarInscripcionMousePressed
+        GUIBuscarInscripcion buscarInscripcion = new GUIBuscarInscripcion();
+        buscarInscripcion.setVisible(true);
+        jDesktopPaneMain.add(buscarInscripcion);
+    }//GEN-LAST:event_jmiBuscarInscripcionMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -261,7 +286,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiEliminarInscripcion;
     private javax.swing.JMenuItem jmiModificarAlumno;
     private javax.swing.JMenuItem jmiModificarMateria;
-    private javax.swing.JMenuItem jmiMostrarAlumnos;
-    private javax.swing.JMenuItem jmiMostrarMaterias;
     // End of variables declaration//GEN-END:variables
 }
