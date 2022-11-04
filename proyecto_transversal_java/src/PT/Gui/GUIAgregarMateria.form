@@ -89,10 +89,12 @@
     <Component class="javax.swing.JTextField" name="jTFNombreMateria">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNombreMateriaActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFNombreMateriaKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFAnioMateria">
       <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFAnioMateriaKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFAnioMateriaKeyTyped"/>
       </Events>
     </Component>

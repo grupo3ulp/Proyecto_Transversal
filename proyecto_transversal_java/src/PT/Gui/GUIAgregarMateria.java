@@ -20,6 +20,7 @@ public class GUIAgregarMateria extends javax.swing.JInternalFrame {
      */
     public GUIAgregarMateria() {
         initComponents();
+        jBGuardar.setEnabled(false);
 
     }
 
@@ -53,8 +54,16 @@ public class GUIAgregarMateria extends javax.swing.JInternalFrame {
                 jTFNombreMateriaActionPerformed(evt);
             }
         });
+        jTFNombreMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNombreMateriaKeyReleased(evt);
+            }
+        });
 
         jTFAnioMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFAnioMateriaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFAnioMateriaKeyTyped(evt);
             }
@@ -155,6 +164,7 @@ public class GUIAgregarMateria extends javax.swing.JInternalFrame {
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         jTFNombreMateria.setText("");
         jTFAnioMateria.setText("");
+        jBGuardar.setEnabled(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
@@ -172,6 +182,22 @@ public class GUIAgregarMateria extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTFAnioMateriaKeyTyped
+
+    private void jTFAnioMateriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFAnioMateriaKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_jTFAnioMateriaKeyReleased
+
+    private void jTFNombreMateriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreMateriaKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_jTFNombreMateriaKeyReleased
+
+    public void habilitarBoton() {
+        if (!jTFAnioMateria.getText().isEmpty() && !jTFNombreMateria.getText().isEmpty()) {
+            jBGuardar.setEnabled(true);
+        } else {
+            jBGuardar.setEnabled(false);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
