@@ -80,7 +80,7 @@ public class DataInscripcion {
             PreparedStatement ps = conec.prepareStatement(query);
             ps.setFloat(1, nota);
             ps.setInt(2, id_inscripcion);
-
+            
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
             } else {
@@ -95,7 +95,7 @@ public class DataInscripcion {
 
     public void deleteInscripcion(int id) {
         String sql = "DELETE FROM inscripcion WHERE id_inscripcion=?";
-
+        
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, id);
