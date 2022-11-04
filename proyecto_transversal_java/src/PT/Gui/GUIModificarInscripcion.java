@@ -89,6 +89,11 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         });
 
         jBCancelar1.setText("Cancelar");
+        jBCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelar1ActionPerformed(evt);
+            }
+        });
 
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,6 +277,10 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         modeloTabla.setNumRows(0);
 
     }//GEN-LAST:event_jBDesinscribirActionPerformed
+
+    private void jBCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelar1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
