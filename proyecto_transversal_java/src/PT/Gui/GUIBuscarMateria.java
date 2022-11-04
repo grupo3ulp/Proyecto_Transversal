@@ -16,16 +16,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUIBuscarMateria extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo;
+    private DefaultTableModel modelo; //Creamos el modelo de la tabla
 
     /**
      * Creates new form GUIBuscarMaterias
      */
     public GUIBuscarMateria() {
         initComponents();
-        jTFBuscarID.setEnabled(false);
+        jBBuscar.setEnabled(false); //Deshabilitamos el botón buscar por default
+        jTFBuscarID.setEnabled(false); //Deshabilitamos por default el campo de buscar ID
         modelo = new DefaultTableModel();
-        armarCabecera();
+        armarCabecera(); //Llamámos al método para asignarle nombres a las cabeceras de la tabla
     }
 
     /**
@@ -144,11 +145,12 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRBMostrarTodosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBMostrarTodosMousePressed
-        jTFBuscarID.setText("");
-        jTFBuscarID.setEnabled(false);
-        jRBBuscar.setSelected(false);
-        borrarFilasTabla();
-        if (!jRBMostrarTodos.isSelected()) {
+        jTFBuscarID.setText(""); //Reseteamos el campo de buscar ID
+        jTFBuscarID.setEnabled(false); //y lo deshabilitamos
+        jRBBuscar.setSelected(false); //Des-seleccionamos el botón de buscar por ID
+        borrarFilasTabla(); //Reseteamos la tabla (si no se vuelven a poner las materias abajo si volvés a presionar)
+        //Condicional para que solo muestre las mats cuando esté seleccionado y no cuando sea un click para des-seleccionar
+        if (!jRBMostrarTodos.isSelected()) { 
             DataMateria DM = new DataMateria();
             for (Materia materia : DM.readAllMateria()) {
                 modelo.addRow(new Object[]{materia.getNombre(), materia.getAnio()});
@@ -157,20 +159,22 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRBMostrarTodosMousePressed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        borrarFilasTabla();
+        borrarFilasTabla(); //Reseteamos la tabla
         DataMateria DM = new DataMateria();
-        Materia auxiliar = new Materia();
-        auxiliar = DM.readMateria(Integer.parseInt(jTFBuscarID.getText()));
-        modelo.addRow(new Object[]{auxiliar.getNombre(), auxiliar.getAnio()});
+        Materia auxiliar = new Materia(); //Creamos una materia auxiliar y le cargamos la materia seleccionada
+        auxiliar = DM.readMateria(Integer.parseInt(jTFBuscarID.getText())); //a través del ID
+        modelo.addRow(new Object[]{auxiliar.getNombre(), auxiliar.getAnio()}); //la añadimos a la tabla
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jRBBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBBuscarMousePressed
-        jTFBuscarID.setEnabled(true);
-        jRBMostrarTodos.setSelected(false);
-        borrarFilasTabla();
+        jTFBuscarID.setEnabled(true); //Habilita el text field del ID
+        jBBuscar.setEnabled(true); //Habilita el botón buscar
+        jRBMostrarTodos.setSelected(false); //Des-selecciona el Mostrar Todas
+        borrarFilasTabla(); // Limpia la tabla
 
         if (jRBBuscar.isSelected()) {
-            jTFBuscarID.setEnabled(false);
+            jTFBuscarID.setEnabled(false); //Deshabilita el text field si no está seleccionado el Buscar
+            jBBuscar.setEnabled(false);
         }
 
     }//GEN-LAST:event_jRBBuscarMousePressed
