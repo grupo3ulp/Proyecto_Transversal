@@ -245,7 +245,7 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
             int id_materia = (int) modeloTabla.getValueAt(fila, 0);
             int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno();
             System.out.println(modeloTabla.getValueAt(fila, 0));
-            Inscripcion inscripcion = new Inscripcion(id_materia, id_alumno, 0);
+            Inscripcion inscripcion = new Inscripcion(id_materia, id_alumno, -1);
             dataInscripcion.crearInscripcion(inscripcion);
         }
         jRBInscriptas.setSelected(false);

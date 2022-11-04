@@ -22,7 +22,7 @@ public class DataInscripcion {
     }
 
     public Inscripcion obtenerInscripcion(int id_inscripcion) {
-
+        
         Inscripcion i = null;
         String query = "SELECT * FROM `inscripcion` WHERE id_inscripcion = ?"; //1
         try {
@@ -42,10 +42,12 @@ public class DataInscripcion {
 
         return i;
     }
-     public ArrayList<Inscripcion> obtenerTodasInscripciones() {
+    
 
+    public ArrayList<Inscripcion> obtenerTodasInscripciones() {
+         
         Inscripcion i = null;
-        ArrayList<Inscripcion>inscripciones=new ArrayList<>();
+        ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         String query = "SELECT * FROM `inscripcion`"; //1
         try {
             PreparedStatement ps = conec.prepareStatement(query); //2
@@ -56,6 +58,7 @@ public class DataInscripcion {
                 i.setId_inscripcion(rs.getInt("id_inscripcion"));
                 i.setId_alumno(rs.getInt("id_alumno"));
                 i.setId_materia(rs.getInt("id_materia"));
+                i.setNota(rs.getFloat("nota"));
                 inscripciones.add(i);
             }
             ps.close();
@@ -65,8 +68,9 @@ public class DataInscripcion {
 
         return inscripciones;
     }
+    
 
-    public void actualizarNota(int id_inscripcion) {
+    public void actualizarNota(int id_inscripcion,float nota) {
 
         Inscripcion i = null;
 
@@ -74,16 +78,15 @@ public class DataInscripcion {
         try {
             i = new Inscripcion();
             PreparedStatement ps = conec.prepareStatement(query);
-            ps.setFloat(1, i.getNota());
+            ps.setFloat(1, nota);
             ps.setInt(2, id_inscripcion);
-            ps.executeUpdate();
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
-            } 
-            
+            }
+
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
@@ -216,5 +219,7 @@ public class DataInscripcion {
 
         return listaAux;
     }
+    
+
 
 }
