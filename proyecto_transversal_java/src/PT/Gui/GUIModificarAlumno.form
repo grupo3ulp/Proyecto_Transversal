@@ -167,6 +167,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JComboModAlumItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
       </AuxValues>
@@ -194,16 +197,19 @@
     <Component class="javax.swing.JTextField" name="JTFModApellidoAlum">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFModApellidoAlumActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFModApellidoAlumKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFModNombreAlum">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFModNombreAlumActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFModNombreAlumKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFDNIModAlum">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFDNIModAlumActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFDNIModAlumKeyTyped"/>
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="DateChooserMod">
