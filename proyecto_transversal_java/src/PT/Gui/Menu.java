@@ -216,7 +216,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jmiEliminarInscripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiEliminarInscripcionMousePressed
         GUIModificarInscripcion modInsc = new GUIModificarInscripcion();
-        modInsc.setVisible(true);
+        modInsc.setVisible(true); 
         jDesktopPaneMain.add(modInsc);
     }//GEN-LAST:event_jmiEliminarInscripcionMousePressed
 

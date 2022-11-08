@@ -11,6 +11,7 @@ import PT.Modelo.Alumno;
 import PT.Modelo.Inscripcion;
 import PT.Modelo.Materia;
 import PT.main.main;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.crypto.Data;
@@ -26,17 +27,22 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
     public GUIModificarInscripcion() {
         DataMateria dataMateria = new DataMateria();
         DataAlumno dataAlumno = new DataAlumno();
+
         initComponents();
+        this.setPreferredSize(new Dimension(900, 600));
+
+        pack();
         jBInscribir.setEnabled(false);
         jBDesinscribir.setEnabled(false);
-        setResizable(false);
 
+        jRBInscriptas.setOpaque(false);
+        jRBNoInscriptas.setOpaque(false);
+
+        setResizable(false);
+        //llenado combobox con alumnos      
         for (Alumno alumno : dataAlumno.readAllAlumno()) {
 
             jCBAlumno.addItem(alumno);
-
-        }
-        for (Materia materia : dataMateria.readAllMateria()) {
 
         }
 //colocando cabezera
@@ -50,6 +56,7 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         }
 //setieando el modelo a la tabla
         jTable.setModel(modeloTabla);
+        jCBAlumno.setSelectedItem(null);
 
     }
 
@@ -63,8 +70,6 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLTitulo = new javax.swing.JLabel();
-        jLMateria = new javax.swing.JLabel();
-        jLAlumno = new javax.swing.JLabel();
         jBDesinscribir = new javax.swing.JButton();
         jBCancelar1 = new javax.swing.JButton();
         jCBAlumno = new javax.swing.JComboBox<>();
@@ -73,55 +78,87 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         jBInscribir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
-        jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLTitulo.setText("MODIFICAR INSCRIPCION");
+        setClosable(true);
+        setIconifiable(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(900, 600));
+        setOpaque(true);
+        setVisible(true);
+        getContentPane().setLayout(null);
 
-        jLMateria.setText("Materias");
+        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo.setText("Inscribir/Desinscribir de Materias");
+        getContentPane().add(jLTitulo);
+        jLTitulo.setBounds(0, 20, 900, 48);
 
-        jLAlumno.setText("Ingrese el alumno del cual quiere modificar la inscripcion");
-
+        jBDesinscribir.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jBDesinscribir.setText("Desinscribir");
+        jBDesinscribir.setAlignmentX(1.0F);
         jBDesinscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDesinscribirActionPerformed(evt);
             }
         });
+        getContentPane().add(jBDesinscribir);
+        jBDesinscribir.setBounds(370, 520, 150, 32);
 
+        jBCancelar1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jBCancelar1.setText("Cancelar");
         jBCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelar1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jBCancelar1);
+        jBCancelar1.setBounds(706, 520, 130, 32);
 
+        jCBAlumno.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBAlumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(jCBAlumno);
+        jCBAlumno.setBounds(270, 140, 350, 31);
 
-        jRBInscriptas.setText("Inscriptas");
+        jRBInscriptas.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jRBInscriptas.setText("Desinscribir");
         jRBInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBInscriptasActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBInscriptas);
+        jRBInscriptas.setBounds(570, 200, 120, 20);
 
-        jRBNoInscriptas.setText("No Inscriptas");
+        jRBNoInscriptas.setBackground(jLabel1.getBackground());
+        jRBNoInscriptas.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jRBNoInscriptas.setText("Inscribir");
         jRBNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBNoInscriptasActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBNoInscriptas);
+        jRBNoInscriptas.setBounds(210, 200, 130, 20);
 
+        jBInscribir.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jBInscribir.setText("Inscribir");
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInscribirActionPerformed(evt);
             }
         });
+        getContentPane().add(jBInscribir);
+        jBInscribir.setBounds(50, 520, 120, 32);
 
+        jTable.setBackground(new java.awt.Color(204, 204, 204));
+        jTable.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -133,90 +170,49 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
                 "Materia", "Año"
             }
         ));
+        jTable.setToolTipText("");
         jScrollPane1.setViewportView(jTable);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jRBInscriptas)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRBNoInscriptas))
-                                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBInscribir)
-                                .addGap(61, 61, 61)
-                                .addComponent(jBDesinscribir)
-                                .addGap(58, 58, 58)
-                                .addComponent(jBCancelar1)))
-                        .addGap(85, 85, 85))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLTitulo)
-                        .addGap(152, 152, 152))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLMateria)
-                        .addGap(242, 242, 242))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLAlumno)
-                .addGap(24, 24, 24)
-                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLMateria)
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRBInscriptas)
-                    .addComponent(jRBNoInscriptas))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBInscribir)
-                    .addComponent(jBDesinscribir)
-                    .addComponent(jBCancelar1))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(50, 240, 790, 232);
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jLabel2.setText("Alumno");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(410, 100, 70, 20);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondo.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 900, 610);
+
+        jRadioButton1.setText("jRadioButton1");
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(710, 160, 98, 21);
+
+        getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRBInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBInscriptasActionPerformed
-        jRBNoInscriptas.setSelected(false);
-        jBInscribir.setEnabled(false);
-        jBDesinscribir.setEnabled(true);
-
+    private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
         DataInscripcion dataInscripcion = new DataInscripcion();
-
-        modeloTabla.setNumRows(0);
-
-        int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno();
-
-        ArrayList<Materia> auxArray = new ArrayList<>();
-        auxArray.addAll(dataInscripcion.obtenerMateriasInscriptas(id_alumno));
-
-        for (Materia materia : auxArray) {
-
-            modeloTabla.addRow(new Object[]{materia.getId_materia(), materia.getNombre(), materia.getAnio()});
+        int fila = jTable.getSelectedRow();
+        if (fila >= 0) {
+            int id_materia = (int) modeloTabla.getValueAt(fila, 0);
+            int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno();
+            System.out.println(modeloTabla.getValueAt(fila, 0));
+            Inscripcion inscripcion = new Inscripcion(id_materia, id_alumno, -1);
+            dataInscripcion.crearInscripcion(inscripcion);
         }
-    }//GEN-LAST:event_jRBInscriptasActionPerformed
+        jRBInscriptas.setSelected(false);
+        jRBNoInscriptas.setSelected(false);
+        modeloTabla.setNumRows(0);
+        jCBAlumno.setSelectedItem(null);
+        jBInscribir.setEnabled(false);
+
+    }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jRBNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBNoInscriptasActionPerformed
         DataInscripcion dataInscripcion = new DataInscripcion();
@@ -238,27 +234,41 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jRBNoInscriptasActionPerformed
 
-    private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
-        DataInscripcion dataInscripcion = new DataInscripcion();
-        int fila = jTable.getSelectedRow();
-        if (fila >= 0) {
-            int id_materia = (int) modeloTabla.getValueAt(fila, 0);
-            int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno();
-            System.out.println(modeloTabla.getValueAt(fila, 0));
-            Inscripcion inscripcion = new Inscripcion(id_materia, id_alumno, -1);
-            dataInscripcion.crearInscripcion(inscripcion);
-        }
-        jRBInscriptas.setSelected(false);
+    private void jRBInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBInscriptasActionPerformed
         jRBNoInscriptas.setSelected(false);
+        jBInscribir.setEnabled(false);
+        jBDesinscribir.setEnabled(true);
+
+        DataInscripcion dataInscripcion = new DataInscripcion();
+
         modeloTabla.setNumRows(0);
 
+        int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno();
 
-    }//GEN-LAST:event_jBInscribirActionPerformed
+        ArrayList<Materia> auxArray = new ArrayList<>();
+        auxArray.addAll(dataInscripcion.obtenerMateriasInscriptas(id_alumno));
+
+        for (Materia materia : auxArray) {
+
+            modeloTabla.addRow(new Object[]{materia.getId_materia(), materia.getNombre(), materia.getAnio()});
+        }
+    }//GEN-LAST:event_jRBInscriptasActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
         jRBInscriptas.setSelected(false);
         jRBNoInscriptas.setSelected(false);
+        if(jCBAlumno.getSelectedItem()==null){
+        jRBInscriptas.setEnabled(false);
+        jRBNoInscriptas.setEnabled(false);
+        }else{
+            jRBInscriptas.setEnabled(true);
+             jRBNoInscriptas.setEnabled(true);
+        }
     }//GEN-LAST:event_jCBAlumnoActionPerformed
+
+    private void jBCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelar1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelar1ActionPerformed
 
     private void jBDesinscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDesinscribirActionPerformed
         DataInscripcion dataInscripcion = new DataInscripcion();
@@ -275,12 +285,9 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         jRBInscriptas.setSelected(false);
         jRBNoInscriptas.setSelected(false);
         modeloTabla.setNumRows(0);
-
+         jCBAlumno.setSelectedItem(null);
+         jBDesinscribir.setEnabled(false);
     }//GEN-LAST:event_jBDesinscribirActionPerformed
-
-    private void jBCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelar1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jBCancelar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -288,11 +295,12 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBDesinscribir;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JComboBox<Object> jCBAlumno;
-    private javax.swing.JLabel jLAlumno;
-    private javax.swing.JLabel jLMateria;
     private javax.swing.JLabel jLTitulo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRBInscriptas;
     private javax.swing.JRadioButton jRBNoInscriptas;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
