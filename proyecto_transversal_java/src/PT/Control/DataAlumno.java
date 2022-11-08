@@ -25,7 +25,7 @@ public class DataAlumno {
         String sql = "INSERT INTO `alumno`(`dni`, `nombre`, `apellido`, `fecha_nacimiento`, `estado`) VALUES (?,?,?,?,?)";
         try {
 
-            PreparedStatement ps = conec.prepareStatement(sql);
+            PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, alumnoAux.getDni());
             ps.setString(2, alumnoAux.getNombre());
             ps.setString(3, alumnoAux.getApellido());
@@ -47,7 +47,7 @@ public class DataAlumno {
 
             conec.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex );
 
         }
 
