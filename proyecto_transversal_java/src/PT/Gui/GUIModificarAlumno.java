@@ -33,9 +33,10 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
             JComboDelAlum.addItem(alumno);
         }
         Date date1 = new GregorianCalendar(2004, Calendar.NOVEMBER, 13).getTime();
-       DateChooserMod.getJCalendar().setMaxSelectableDate(date1);
-       Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
-       DateChooserMod.getJCalendar().setMinSelectableDate(date2);
+        DateChooserMod.getJCalendar().setMaxSelectableDate(date1);
+        Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
+        DateChooserMod.getJCalendar().setMinSelectableDate(date2);
+        DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboDelAlum.getSelectedItem()).getFecha_nacimiento()));
     }
 
     /**
@@ -293,11 +294,26 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBCancelarDelAActionPerformed
 
     private void JBGuardarModAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarModAActionPerformed
+        int cont = 0;
         DataAlumno DA = new DataAlumno();
         int d = DateChooserMod.getCalendar().get(Calendar.DAY_OF_MONTH);
         int m = DateChooserMod.getCalendar().getTime().getMonth() + 1;
         int an = DateChooserMod.getCalendar().getTime().getYear() + 1900;
-        DA.updateAlumno(((Alumno) JComboModAlum.getSelectedItem()), JTFModApellidoAlum.getText(), JTFModNombreAlum.getText(), JTFModApellidoAlum.getText(), java.sql.Date.valueOf(LocalDate.of(an, m, d)));// TODO add your handling code here:
+        DataAlumno DA2 = new DataAlumno();
+
+        for (Alumno alumno : DA.readAllAlumno()) {
+            if (alumno.getDni().equals(JTFDNIModAlum.getText())) {
+                cont++;
+            }
+        }
+
+        if (cont == 1) {
+            JOptionPane.showMessageDialog(null, "El dni ya existe en la base de datos");
+        } else {
+            DA2.updateAlumno(((Alumno) JComboModAlum.getSelectedItem()), JTFDNIModAlum.getText(), JTFModNombreAlum.getText(), JTFModApellidoAlum.getText(), java.sql.Date.valueOf(LocalDate.of(an, m, d)));
+        }
+
+        cont = 0;
     }//GEN-LAST:event_JBGuardarModAActionPerformed
 
     private void JBBorrarDelAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBorrarDelAActionPerformed
@@ -306,10 +322,14 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBBorrarDelAActionPerformed
 
     private void JComboModAlumItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboModAlumItemStateChanged
-        JTFDNIModAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getDni()));
-        JTFModNombreAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getNombre()));
-        JTFModApellidoAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getApellido()));
-        ((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
+        
+            JTFDNIModAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getDni()));
+            JTFModNombreAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getNombre()));
+            JTFModApellidoAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getApellido()));
+            //((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
+
+            DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboDelAlum.getSelectedItem()).getFecha_nacimiento()));
+        
     }//GEN-LAST:event_JComboModAlumItemStateChanged
 
     private void JTFDNIModAlumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFDNIModAlumKeyTyped

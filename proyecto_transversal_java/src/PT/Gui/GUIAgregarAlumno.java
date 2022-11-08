@@ -103,11 +103,6 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                 DateChooserPropertyChange(evt);
             }
         });
-        DateChooser.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DateChooserKeyPressed(evt);
-            }
-        });
 
         JBCancelarA.setText("Cancelar");
         JBCancelarA.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +196,7 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
 
     private void JBGuardarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarAActionPerformed
         int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea guardar este alumno?");
+        int cont = 0;
         if (aux == 0) {
             Alumno a = new Alumno();
             int d = DateChooser.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -210,9 +206,23 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
             a.setNombre(JTFNombreAlumno.getText());
             a.setApellido(JTFApellidoAlumno.getText());
             a.setFecha_nacimiento(LocalDate.of(an, m, d));
-
+            
             DataAlumno DA = new DataAlumno();
-            DA.createAlumno(a);
+            DataAlumno DA2 = new DataAlumno();
+            
+            for (Alumno alumno : DA.readAllAlumno()) {
+                if (alumno.getDni().equals(JTFDNIAlumno.getText())) {
+                    cont++;
+                }
+            }
+            
+            if (cont==1) {
+                 JOptionPane.showMessageDialog(null, "El dni ya existe en la base de datos");
+            }else{
+                DA2.createAlumno(a);
+            }
+            
+            cont = 0;
 
             JTFDNIAlumno.setText("");
             JTFNombreAlumno.setText("");
@@ -291,10 +301,6 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                     + "este campo");
         }
     }//GEN-LAST:event_JTFApellidoAlumnoKeyTyped
-
-    private void DateChooserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateChooserKeyPressed
-       
-    }//GEN-LAST:event_DateChooserKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
