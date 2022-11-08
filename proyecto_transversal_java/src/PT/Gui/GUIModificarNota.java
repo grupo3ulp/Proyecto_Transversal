@@ -7,28 +7,30 @@ import PT.Modelo.Alumno;
 import PT.Modelo.Inscripcion;
 import PT.Modelo.Materia;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class GUIModificarNota extends javax.swing.JInternalFrame {
-
+    
     DefaultTableModel modeloTabla = new DefaultTableModel();
-
+    
     public GUIModificarNota() {
         initComponents();
         DataMateria dataMateria = new DataMateria();
         DataAlumno dataAlumno = new DataAlumno();
         initComponents();
         jBModificar.setEnabled(false);
-
+        
+        
         setResizable(false);
-
+        
         for (Alumno alumno : dataAlumno.readAllAlumno()) {
-
+            
             jCBAlumno.addItem(alumno);
-
+            
         }
         for (Materia materia : dataMateria.readAllMateria()) {
-
+            
         }
 //colocando cabezera
         ArrayList<Object> columnas = new ArrayList<Object>();
@@ -36,15 +38,15 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
         columnas.add("Materia");
         columnas.add("Año");
         columnas.add("Nota");
-
+        
         for (Object it : columnas) {
             modeloTabla.addColumn(it);
         }
 //setieando el modelo a la tabla
         jTable.setModel(modeloTabla);
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -95,9 +97,23 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
                 "Materia", "Año"
             }
         ));
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable);
 
         jLNota.setText("Nota");
+
+        jTFNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNotaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNotaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,17 +122,14 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
+                        .addGap(200, 200, 200)
                         .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(jLNota))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLAlumno)))
+                        .addGap(236, 236, 236)
+                        .addComponent(jLNota)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jBModificar)
@@ -125,13 +138,16 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
                         .addGap(85, 85, 85))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLAlumno)
+                        .addGap(118, 118, 118))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113))
+                        .addGap(79, 79, 79))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLTitulo)
-                        .addGap(202, 202, 202))))
+                        .addGap(174, 174, 174))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +179,8 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBCancelar1ActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-
-        jBModificar.setEnabled(true);
-
+        
+        
         DataInscripcion dataInscripcion = new DataInscripcion();
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         inscripciones.addAll(dataInscripcion.obtenerTodasInscripciones());
@@ -173,38 +188,94 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
         int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno(), c;
         ArrayList<Materia> auxArray = new ArrayList<>();
         auxArray.addAll(dataInscripcion.obtenerMateriasInscriptas(id_alumno));
-      
+        
         for (Inscripcion aux : inscripciones) {
             for (Materia materia : auxArray) {
                 
                 if (aux.getId_alumno() == id_alumno && aux.getId_materia() == materia.getId_materia()) {
                     modeloTabla.addRow(new Object[]{materia.getId_materia(), materia.getNombre(),
-                    materia.getAnio(), (float)aux.getNota()});
+                        materia.getAnio(), (float) aux.getNota()});
                 }
                 
             }
-
+            
         }
         
+        int fila = jTable.getSelectedRow();
+        boolean flag=false;
+        try {
+            boolean aux=modeloTabla.getValueAt(0, fila).equals("");
+            flag=true;
+        } catch (Exception e) {
+            flag=false;
+        }
+        if (!jTFNota.getText().equals("")&&flag) {
+            jBModificar.setEnabled(true);
+        }else{
+        jBModificar.setEnabled(false);
+        }
+
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-         DataInscripcion dataInscripcion = new DataInscripcion();
+        DataInscripcion dataInscripcion = new DataInscripcion();
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         inscripciones.addAll(dataInscripcion.obtenerTodasInscripciones());
         int fila = jTable.getSelectedRow();
         int id_materia = (int) modeloTabla.getValueAt(fila, 0);
         int id_alumno = ((Alumno) jCBAlumno.getSelectedItem()).getId_alumno();
-        float notaNueva=Float.parseFloat(jTFNota.getText());
+        float notaNueva = Float.parseFloat(jTFNota.getText());
         for (Inscripcion aux : inscripciones) {
             if (aux.getId_alumno() == id_alumno && aux.getId_materia() == id_materia) {
-                dataInscripcion.actualizarNota(aux.getId_inscripcion(),notaNueva);
+                dataInscripcion.actualizarNota(aux.getId_inscripcion(), notaNueva);
             }
         }
         jTFNota.setText("");
         modeloTabla.setNumRows(0);
 
     }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jTFNotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNotaKeyReleased
+        int fila = jTable.getSelectedRow();
+        boolean flag=false;
+        try {
+            boolean aux=modeloTabla.getValueAt(0, fila).equals("");
+            flag=true;
+        } catch (Exception e) {
+            flag=false;
+        }
+        if (!jTFNota.getText().equals("")&&flag) {
+            jBModificar.setEnabled(true);
+        }else{
+        jBModificar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTFNotaKeyReleased
+
+    private void jTFNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNotaKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");           
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFNotaKeyTyped
+
+    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+  int fila = jTable.getSelectedRow();
+        boolean flag=false;
+        try {
+            boolean aux=modeloTabla.getValueAt(0, fila).equals("");
+            flag=true;
+        } catch (Exception e) {
+            flag=false;
+        }
+        if (!jTFNota.getText().equals("")&&flag) {
+            jBModificar.setEnabled(true);
+        }else{
+        jBModificar.setEnabled(false);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
