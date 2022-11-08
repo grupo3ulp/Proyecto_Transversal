@@ -5,6 +5,10 @@
  */
 package PT.Gui;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Moon
@@ -16,6 +20,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -30,7 +35,13 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jDesktopPaneMain = new javax.swing.JDesktopPane();
+        ImageIcon icon=new ImageIcon(getClass().getResource("fondo.png"));
+        Image img=icon.getImage();
+        jDesktopPaneMain = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g){
+                g.drawImage(img,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu_Materias = new javax.swing.JMenu();
         jmiAgregarMateria = new javax.swing.JMenuItem();
@@ -56,11 +67,11 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPaneMain.setLayout(jDesktopPaneMainLayout);
         jDesktopPaneMainLayout.setHorizontalGroup(
             jDesktopPaneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1366, Short.MAX_VALUE)
         );
         jDesktopPaneMainLayout.setVerticalGroup(
             jDesktopPaneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 745, Short.MAX_VALUE)
         );
 
         jMenu_Materias.setText("Materias");
