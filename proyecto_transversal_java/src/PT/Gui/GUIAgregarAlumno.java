@@ -9,6 +9,8 @@ import PT.Modelo.Alumno;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -25,6 +27,10 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         initComponents();
         JTextFieldDateEditor editor = (JTextFieldDateEditor) DateChooser.getDateEditor();
         editor.setEditable(false);
+        Date date1 = new GregorianCalendar(2004, Calendar.NOVEMBER, 13).getTime();
+       DateChooser.getJCalendar().setMaxSelectableDate(date1);
+       Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
+       DateChooser.getJCalendar().setMinSelectableDate(date2);
     }
 
     /**
@@ -95,6 +101,11 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         DateChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 DateChooserPropertyChange(evt);
+            }
+        });
+        DateChooser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DateChooserKeyPressed(evt);
             }
         });
 
@@ -280,6 +291,10 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                     + "este campo");
         }
     }//GEN-LAST:event_JTFApellidoAlumnoKeyTyped
+
+    private void DateChooserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateChooserKeyPressed
+       
+    }//GEN-LAST:event_DateChooserKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

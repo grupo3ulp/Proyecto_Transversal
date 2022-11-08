@@ -9,6 +9,8 @@ import PT.Modelo.Alumno;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -30,6 +32,10 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
             JComboModAlum.addItem(alumno);
             JComboDelAlum.addItem(alumno);
         }
+        Date date1 = new GregorianCalendar(2004, Calendar.NOVEMBER, 13).getTime();
+       DateChooserMod.getJCalendar().setMaxSelectableDate(date1);
+       Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
+       DateChooserMod.getJCalendar().setMinSelectableDate(date2);
     }
 
     /**
