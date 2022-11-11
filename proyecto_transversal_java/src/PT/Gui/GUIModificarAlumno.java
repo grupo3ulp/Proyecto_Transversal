@@ -37,7 +37,7 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
         DateChooserMod.getJCalendar().setMaxSelectableDate(date1);
         Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
         DateChooserMod.getJCalendar().setMinSelectableDate(date2);
-        DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboDelAlum.getSelectedItem()).getFecha_nacimiento()));
+        DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
     }
 
     /**
@@ -342,7 +342,7 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
             JTFModApellidoAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getApellido()));
             //((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
 
-            //DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboDelAlum.getSelectedItem()).getFecha_nacimiento()));
+            DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
         
     }//GEN-LAST:event_JComboModAlumItemStateChanged
 
