@@ -7,6 +7,7 @@ package PT.Gui;
 import PT.Control.DataAlumno;
 import PT.Modelo.Alumno;
 import com.toedter.calendar.JTextFieldDateEditor;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,7 +49,6 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         JComboModAlum = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -60,34 +60,64 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
         JTFDNIModAlum = new javax.swing.JTextField();
         DateChooserMod = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         JComboDelAlum = new javax.swing.JComboBox<>();
-        JBCancelarModA = new javax.swing.JButton();
         JBLimpiarModA = new javax.swing.JButton();
         JBGuardarModA = new javax.swing.JButton();
         JBCancelarDelA = new javax.swing.JButton();
         JBBorrarDelA = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLTitulo2 = new javax.swing.JLabel();
+        jLTitulo3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Modificar Alumno");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(832, 531));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Elija el alumno que desea modificar");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
 
+        JComboModAlum.setBackground(new java.awt.Color(255, 255, 255));
         JComboModAlum.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 JComboModAlumItemStateChanged(evt);
             }
         });
+        getContentPane().add(JComboModAlum, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 316, -1));
 
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("DNI");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 50, -1));
 
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Nombre");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Apellido");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Fecha de nacimiento");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
+        JTFModApellidoAlum.setBackground(new java.awt.Color(255, 255, 255));
+        JTFModApellidoAlum.setForeground(new java.awt.Color(204, 204, 204));
+        JTFModApellidoAlum.setText("Ingrese el apellido aquí");
+        JTFModApellidoAlum.setBorder(null);
+        JTFModApellidoAlum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFModApellidoAlumMousePressed(evt);
+            }
+        });
         JTFModApellidoAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFModApellidoAlumActionPerformed(evt);
@@ -98,7 +128,17 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
                 JTFModApellidoAlumKeyTyped(evt);
             }
         });
+        getContentPane().add(JTFModApellidoAlum, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 176, 394, 20));
 
+        JTFModNombreAlum.setBackground(new java.awt.Color(255, 255, 255));
+        JTFModNombreAlum.setForeground(new java.awt.Color(204, 204, 204));
+        JTFModNombreAlum.setText("Ingrese el nombre aquí");
+        JTFModNombreAlum.setBorder(null);
+        JTFModNombreAlum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFModNombreAlumMousePressed(evt);
+            }
+        });
         JTFModNombreAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFModNombreAlumActionPerformed(evt);
@@ -109,7 +149,17 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
                 JTFModNombreAlumKeyTyped(evt);
             }
         });
+        getContentPane().add(JTFModNombreAlum, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 394, -1));
 
+        JTFDNIModAlum.setBackground(new java.awt.Color(255, 255, 255));
+        JTFDNIModAlum.setForeground(new java.awt.Color(204, 204, 204));
+        JTFDNIModAlum.setText("Ingrese el DNI aquí (sin puntos)");
+        JTFDNIModAlum.setBorder(null);
+        JTFDNIModAlum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFDNIModAlumMousePressed(evt);
+            }
+        });
         JTFDNIModAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFDNIModAlumActionPerformed(evt);
@@ -120,148 +170,116 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
                 JTFDNIModAlumKeyTyped(evt);
             }
         });
+        getContentPane().add(JTFDNIModAlum, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 394, 20));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setText("Dar de baja alumno");
+        DateChooserMod.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(DateChooserMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 394, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 830, 10));
 
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Elija el alumno que desea dar de baja");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
-        JBCancelarModA.setText("Cancelar");
-        JBCancelarModA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBCancelarModAActionPerformed(evt);
-            }
-        });
+        JComboDelAlum.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(JComboDelAlum, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 316, -1));
 
+        JBLimpiarModA.setForeground(new java.awt.Color(51, 51, 51));
         JBLimpiarModA.setText("Limpiar");
+        JBLimpiarModA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBLimpiarModA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBLimpiarModAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBLimpiarModA, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 90, 30));
 
+        JBGuardarModA.setForeground(new java.awt.Color(51, 51, 51));
         JBGuardarModA.setText("Guardar");
+        JBGuardarModA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBGuardarModA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBGuardarModAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBGuardarModA, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 90, 30));
 
+        JBCancelarDelA.setForeground(new java.awt.Color(51, 51, 51));
         JBCancelarDelA.setText("Cancelar");
+        JBCancelarDelA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBCancelarDelA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBCancelarDelAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBCancelarDelA, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 90, 30));
 
+        JBBorrarDelA.setForeground(new java.awt.Color(51, 51, 51));
         JBBorrarDelA.setText("Borrar");
+        JBBorrarDelA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBBorrarDelA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBBorrarDelAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBBorrarDelA, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, 90, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(84, 84, 84)
-                            .addComponent(JBCancelarModA)
-                            .addGap(115, 115, 115)
-                            .addComponent(JBLimpiarModA)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JBGuardarModA))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(JComboModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(JTFDNIModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel6))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(DateChooserMod, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                                        .addComponent(JTFModNombreAlum)
-                                        .addComponent(JTFModApellidoAlum))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JBCancelarDelA)
-                            .addComponent(jLabel8))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(JComboDelAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(163, 163, 163)
-                                .addComponent(JBBorrarDelA)))))
-                .addContainerGap(51, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(38, 79, 135));
+
+        jLTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo2.setText("Modificar Alumno");
+
+        jLTitulo3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo3.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo3.setText("Borrar Alumno");
+
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLTitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jLTitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(JComboModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addComponent(JTFDNIModAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JTFModNombreAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(JTFModApellidoAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(DateChooserMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBCancelarModA)
-                    .addComponent(JBLimpiarModA)
-                    .addComponent(JBGuardarModA))
-                .addGap(4, 4, 4)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(JComboDelAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBCancelarDelA)
-                    .addComponent(JBBorrarDelA))
-                .addGap(26, 26, 26))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                .addComponent(jLTitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 510));
+
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 400, 20));
+
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 400, 20));
+
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 400, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,10 +302,6 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
         JTFModApellidoAlum.setText("");
         ((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText("");
     }//GEN-LAST:event_JBLimpiarModAActionPerformed
-
-    private void JBCancelarModAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarModAActionPerformed
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_JBCancelarModAActionPerformed
 
     private void JBCancelarDelAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarDelAActionPerformed
         dispose();        // TODO add your handling code here:
@@ -328,7 +342,7 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
             JTFModApellidoAlum.setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getApellido()));
             //((JTextField) DateChooserMod.getDateEditor().getUiComponent()).setText(String.valueOf(((Alumno) JComboModAlum.getSelectedItem()).getFecha_nacimiento()));
 
-            DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboDelAlum.getSelectedItem()).getFecha_nacimiento()));
+            //DateChooserMod.setDate(java.sql.Date.valueOf(((Alumno) JComboDelAlum.getSelectedItem()).getFecha_nacimiento()));
         
     }//GEN-LAST:event_JComboModAlumItemStateChanged
 
@@ -359,12 +373,26 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JTFModApellidoAlumKeyTyped
 
+    private void JTFDNIModAlumMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDNIModAlumMousePressed
+        JTFDNIModAlum.setText("");
+        JTFDNIModAlum.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_JTFDNIModAlumMousePressed
+
+    private void JTFModNombreAlumMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFModNombreAlumMousePressed
+        JTFModNombreAlum.setText("");
+        JTFModNombreAlum.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_JTFModNombreAlumMousePressed
+
+    private void JTFModApellidoAlumMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFModApellidoAlumMousePressed
+        JTFModApellidoAlum.setText("");
+        JTFModApellidoAlum.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_JTFModApellidoAlumMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser DateChooserMod;
     private javax.swing.JButton JBBorrarDelA;
     private javax.swing.JButton JBCancelarDelA;
-    private javax.swing.JButton JBCancelarModA;
     private javax.swing.JButton JBGuardarModA;
     private javax.swing.JButton JBLimpiarModA;
     private javax.swing.JComboBox<Alumno> JComboDelAlum;
@@ -372,14 +400,20 @@ public class GUIModificarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JTFDNIModAlum;
     private javax.swing.JTextField JTFModApellidoAlum;
     private javax.swing.JTextField JTFModNombreAlum;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JLabel jLTitulo3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     // End of variables declaration//GEN-END:variables
 }

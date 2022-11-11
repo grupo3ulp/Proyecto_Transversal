@@ -6,6 +6,7 @@ import PT.Control.DataMateria;
 import PT.Modelo.Alumno;
 import PT.Modelo.Inscripcion;
 import PT.Modelo.Materia;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -51,7 +52,6 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLTitulo = new javax.swing.JLabel();
         jLAlumno = new javax.swing.JLabel();
         jBCancelar1 = new javax.swing.JButton();
         jCBAlumno = new javax.swing.JComboBox<>();
@@ -60,32 +60,47 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
         jTable = new javax.swing.JTable();
         jLNota = new javax.swing.JLabel();
         jTFNota = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLTitulo2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
-        jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLTitulo.setText("MODIFICAR NOTA");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(742, 458));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLAlumno.setText("Ingrese el alumno del cual quiere modificar la nota");
+        jLAlumno.setForeground(new java.awt.Color(51, 51, 51));
+        jLAlumno.setText("Elija al alumnoal que le quiere modificar la nota");
+        getContentPane().add(jLAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
 
+        jBCancelar1.setForeground(new java.awt.Color(51, 51, 51));
         jBCancelar1.setText("Cancelar");
+        jBCancelar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelar1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jBCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 100, 30));
 
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBAlumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(jCBAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 350, -1));
 
+        jBModificar.setForeground(new java.awt.Color(51, 51, 51));
         jBModificar.setText("Modificar");
+        jBModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBModificarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 100, 30));
 
+        jTable.setBackground(new java.awt.Color(255, 255, 255));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -104,8 +119,21 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable);
 
-        jLNota.setText("Nota");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 461, 131));
 
+        jLNota.setForeground(new java.awt.Color(51, 51, 51));
+        jLNota.setText("Ingrese la nueva nota");
+        getContentPane().add(jLNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+
+        jTFNota.setBackground(new java.awt.Color(255, 255, 255));
+        jTFNota.setForeground(new java.awt.Color(204, 204, 204));
+        jTFNota.setText("Su nota aquí");
+        jTFNota.setBorder(null);
+        jTFNota.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTFNotaMousePressed(evt);
+            }
+        });
         jTFNota.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTFNotaKeyReleased(evt);
@@ -114,62 +142,41 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
                 jTFNotaKeyTyped(evt);
             }
         });
+        getContentPane().add(jTFNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 130, 29));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLNota)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jBModificar)
-                        .addGap(235, 235, 235)
-                        .addComponent(jBCancelar1)
-                        .addGap(85, 85, 85))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLAlumno)
-                        .addGap(118, 118, 118))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLTitulo)
-                        .addGap(174, 174, 174))))
+        jPanel1.setBackground(new java.awt.Color(38, 79, 135));
+
+        jLTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo2.setText("Modificar Nota");
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLTitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLAlumno)
-                .addGap(18, 18, 18)
-                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLNota)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBModificar)
-                    .addComponent(jBCancelar1))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(375, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 440));
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 130, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -253,12 +260,14 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
 
     private void jTFNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNotaKeyTyped
         Character c = evt.getKeyChar();
-        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.')) {
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
-                    + "este campo");           
+                    + "este campo");
         }
-        // TODO add your handling code here:
+        if (jTFNota.getText().length() > 3) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTFNotaKeyTyped
 
     private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
@@ -277,6 +286,11 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTableMouseClicked
 
+    private void jTFNotaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFNotaMousePressed
+        jTFNota.setText("");
+        jTFNota.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_jTFNotaMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar1;
@@ -284,8 +298,11 @@ public class GUIModificarNota extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Object> jCBAlumno;
     private javax.swing.JLabel jLAlumno;
     private javax.swing.JLabel jLNota;
-    private javax.swing.JLabel jLTitulo;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTFNota;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables

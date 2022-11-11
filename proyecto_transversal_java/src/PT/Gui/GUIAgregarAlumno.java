@@ -7,6 +7,7 @@ package PT.Gui;
 import PT.Control.DataAlumno;
 import PT.Modelo.Alumno;
 import com.toedter.calendar.JTextFieldDateEditor;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,9 +29,9 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         JTextFieldDateEditor editor = (JTextFieldDateEditor) DateChooser.getDateEditor();
         editor.setEditable(false);
         Date date1 = new GregorianCalendar(2004, Calendar.NOVEMBER, 13).getTime();
-       DateChooser.getJCalendar().setMaxSelectableDate(date1);
-       Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
-       DateChooser.getJCalendar().setMinSelectableDate(date2);
+        DateChooser.getJCalendar().setMaxSelectableDate(date1);
+        Date date2 = new GregorianCalendar(1930, Calendar.JANUARY, 1).getTime();
+        DateChooser.getJCalendar().setMinSelectableDate(date2);
     }
 
     /**
@@ -42,7 +43,6 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         JTFDNIAlumno = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -54,12 +54,32 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         JBCancelarA = new javax.swing.JButton();
         JBLimpiarA = new javax.swing.JButton();
         JBGuardarA = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLTitulo2 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Agregar Alumno");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(668, 415));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("DNI");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 30, -1));
 
+        JTFDNIAlumno.setBackground(new java.awt.Color(255, 255, 255));
+        JTFDNIAlumno.setForeground(new java.awt.Color(204, 204, 204));
+        JTFDNIAlumno.setText("Ingrese el DNI aquí (sin puntos)");
+        JTFDNIAlumno.setBorder(null);
+        JTFDNIAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFDNIAlumnoMousePressed(evt);
+            }
+        });
         JTFDNIAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 JTFDNIAlumnoKeyReleased(evt);
@@ -68,9 +88,22 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                 JTFDNIAlumnoKeyTyped(evt);
             }
         });
+        getContentPane().add(JTFDNIAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 250, 20));
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Nombre");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
+        JTFNombreAlumno.setBackground(new java.awt.Color(255, 255, 255));
+        JTFNombreAlumno.setForeground(new java.awt.Color(204, 204, 204));
+        JTFNombreAlumno.setText("Ingrese el nombre aquí");
+        JTFNombreAlumno.setBorder(null);
+        JTFNombreAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFNombreAlumnoMousePressed(evt);
+            }
+        });
         JTFNombreAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 JTFNombreAlumnoKeyReleased(evt);
@@ -79,9 +112,22 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                 JTFNombreAlumnoKeyTyped(evt);
             }
         });
+        getContentPane().add(JTFNombreAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 250, 20));
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Apellido");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
 
+        JTFApellidoAlumno.setBackground(new java.awt.Color(255, 255, 255));
+        JTFApellidoAlumno.setForeground(new java.awt.Color(204, 204, 204));
+        JTFApellidoAlumno.setText("Ingrese el apellido aquí");
+        JTFApellidoAlumno.setBorder(null);
+        JTFApellidoAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFApellidoAlumnoMousePressed(evt);
+            }
+        });
         JTFApellidoAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFApellidoAlumnoActionPerformed(evt);
@@ -95,97 +141,91 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
                 JTFApellidoAlumnoKeyTyped(evt);
             }
         });
+        getContentPane().add(JTFApellidoAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 250, 20));
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Fecha de nacimiento");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
+        DateChooser.setBackground(new java.awt.Color(255, 255, 255));
         DateChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 DateChooserPropertyChange(evt);
             }
         });
+        getContentPane().add(DateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 190, -1));
 
+        JBCancelarA.setForeground(new java.awt.Color(51, 51, 51));
         JBCancelarA.setText("Cancelar");
+        JBCancelarA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBCancelarA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBCancelarAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBCancelarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 90, 30));
 
+        JBLimpiarA.setForeground(new java.awt.Color(51, 51, 51));
         JBLimpiarA.setText("Limpiar");
+        JBLimpiarA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBLimpiarA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBLimpiarAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBLimpiarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 90, 30));
 
+        JBGuardarA.setForeground(new java.awt.Color(51, 51, 51));
         JBGuardarA.setText("Guardar");
+        JBGuardarA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JBGuardarA.setEnabled(false);
         JBGuardarA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBGuardarAActionPerformed(evt);
             }
         });
+        getContentPane().add(JBGuardarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 90, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(72, 72, 72)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(DateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(JTFApellidoAlumno)
-                                    .addComponent(JTFNombreAlumno)
-                                    .addComponent(JTFDNIAlumno)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(JBCancelarA)
-                                .addGap(94, 94, 94)
-                                .addComponent(JBLimpiarA)
-                                .addGap(99, 99, 99)
-                                .addComponent(JBGuardarA)))))
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(JTFDNIAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(JTFNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JTFApellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel1.setBackground(new java.awt.Color(38, 79, 135));
+
+        jLTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo2.setText("Agregar Alumno");
+
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLTitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBCancelarA)
-                    .addComponent(JBLimpiarA)
-                    .addComponent(JBGuardarA))
-                .addGap(40, 40, 40))
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(335, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 400));
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 250, 20));
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 250, 20));
+
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 250, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,22 +246,22 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
             a.setNombre(JTFNombreAlumno.getText());
             a.setApellido(JTFApellidoAlumno.getText());
             a.setFecha_nacimiento(LocalDate.of(an, m, d));
-            
+
             DataAlumno DA = new DataAlumno();
             DataAlumno DA2 = new DataAlumno();
-            
+
             for (Alumno alumno : DA.readAllAlumno()) {
                 if (alumno.getDni().equals(JTFDNIAlumno.getText())) {
                     cont++;
                 }
             }
-            
-            if (cont==1) {
-                 JOptionPane.showMessageDialog(null, "El dni ya existe en la base de datos");
-            }else{
+
+            if (cont == 1) {
+                JOptionPane.showMessageDialog(null, "El dni ya existe en la base de datos");
+            } else {
                 DA2.createAlumno(a);
             }
-            
+
             cont = 0;
 
             JTFDNIAlumno.setText("");
@@ -302,6 +342,21 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JTFApellidoAlumnoKeyTyped
 
+    private void JTFApellidoAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFApellidoAlumnoMousePressed
+        JTFApellidoAlumno.setText("");
+        JTFApellidoAlumno.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_JTFApellidoAlumnoMousePressed
+
+    private void JTFNombreAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFNombreAlumnoMousePressed
+        JTFNombreAlumno.setText("");
+        JTFNombreAlumno.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_JTFNombreAlumnoMousePressed
+
+    private void JTFDNIAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDNIAlumnoMousePressed
+        JTFDNIAlumno.setText("");
+        JTFDNIAlumno.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_JTFDNIAlumnoMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser DateChooser;
@@ -311,10 +366,15 @@ public class GUIAgregarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JTFApellidoAlumno;
     private javax.swing.JTextField JTFDNIAlumno;
     private javax.swing.JTextField JTFNombreAlumno;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLTitulo2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
 }

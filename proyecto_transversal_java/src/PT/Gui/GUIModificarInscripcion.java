@@ -29,7 +29,6 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         DataAlumno dataAlumno = new DataAlumno();
 
         initComponents();
-        this.setPreferredSize(new Dimension(900, 600));
 
         pack();
         jBInscribir.setEnabled(false);
@@ -69,7 +68,6 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLTitulo = new javax.swing.JLabel();
         jBDesinscribir = new javax.swing.JButton();
         jBCancelar1 = new javax.swing.JButton();
         jCBAlumno = new javax.swing.JComboBox<>();
@@ -79,43 +77,41 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLTitulo2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLTitulo3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
-        setIconifiable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        setOpaque(true);
+        setPreferredSize(new java.awt.Dimension(832, 497));
         setVisible(true);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLTitulo.setText("Inscribir/Desinscribir de Materias");
-        getContentPane().add(jLTitulo);
-        jLTitulo.setBounds(0, 20, 900, 48);
-
-        jBDesinscribir.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jBDesinscribir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jBDesinscribir.setForeground(new java.awt.Color(51, 51, 51));
         jBDesinscribir.setText("Desinscribir");
         jBDesinscribir.setAlignmentX(1.0F);
+        jBDesinscribir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBDesinscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDesinscribirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBDesinscribir);
-        jBDesinscribir.setBounds(370, 520, 150, 32);
+        getContentPane().add(jBDesinscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 120, 30));
 
-        jBCancelar1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jBCancelar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jBCancelar1.setForeground(new java.awt.Color(51, 51, 51));
         jBCancelar1.setText("Cancelar");
+        jBCancelar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelar1);
-        jBCancelar1.setBounds(706, 520, 130, 32);
+        getContentPane().add(jBCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 110, 30));
 
         jCBAlumno.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -123,39 +119,40 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
                 jCBAlumnoActionPerformed(evt);
             }
         });
-        getContentPane().add(jCBAlumno);
-        jCBAlumno.setBounds(270, 140, 350, 31);
+        getContentPane().add(jCBAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 350, -1));
 
-        jRBInscriptas.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jRBInscriptas.setBackground(new java.awt.Color(255, 255, 255));
+        jRBInscriptas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jRBInscriptas.setForeground(new java.awt.Color(51, 51, 51));
         jRBInscriptas.setText("Desinscribir");
         jRBInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBInscriptasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBInscriptas);
-        jRBInscriptas.setBounds(570, 200, 120, 20);
+        getContentPane().add(jRBInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 140, 30));
 
-        jRBNoInscriptas.setBackground(jLabel1.getBackground());
-        jRBNoInscriptas.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jRBNoInscriptas.setBackground(new java.awt.Color(255, 255, 255));
+        jRBNoInscriptas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jRBNoInscriptas.setForeground(new java.awt.Color(51, 51, 51));
         jRBNoInscriptas.setText("Inscribir");
         jRBNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBNoInscriptasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBNoInscriptas);
-        jRBNoInscriptas.setBounds(210, 200, 130, 20);
+        getContentPane().add(jRBNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 130, 30));
 
-        jBInscribir.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jBInscribir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jBInscribir.setForeground(new java.awt.Color(51, 51, 51));
         jBInscribir.setText("Inscribir");
+        jBInscribir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInscribirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBInscribir);
-        jBInscribir.setBounds(50, 520, 120, 32);
+        getContentPane().add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 110, 30));
 
         jTable.setBackground(new java.awt.Color(204, 204, 204));
         jTable.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -173,23 +170,32 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
         jTable.setToolTipText("");
         jScrollPane1.setViewportView(jTable);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 240, 790, 232);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 490, 150));
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Alumno");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(410, 100, 70, 20);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 70, 20));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondo.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 900, 610);
+        jPanel1.setBackground(new java.awt.Color(38, 79, 135));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jRadioButton1.setText("jRadioButton1");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(710, 160, 98, 21);
+        jLTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo2.setText("Formulario de");
+        jPanel1.add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 220, 30));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 161, 49));
+
+        jLTitulo3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo3.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo3.setText("Inscripción");
+        jPanel1.add(jLTitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 50, 210, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 520));
 
         getAccessibleContext().setAccessibleParent(this);
 
@@ -295,13 +301,14 @@ public class GUIModificarInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBDesinscribir;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JComboBox<Object> jCBAlumno;
-    private javax.swing.JLabel jLTitulo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JLabel jLTitulo3;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBInscriptas;
     private javax.swing.JRadioButton jRBNoInscriptas;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 }

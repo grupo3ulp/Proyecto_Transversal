@@ -7,6 +7,7 @@ package PT.Gui;
 
 import PT.Control.DataAlumno;
 import PT.Modelo.Alumno;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,11 +43,19 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
         jTAlumnos = new javax.swing.JTable();
         jBBuscar = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jRBBuscar = new javax.swing.JRadioButton();
         jTFBuscarID = new javax.swing.JTextField();
         jRBMostrarTodos = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLTitulo2 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(726, 432));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -60,24 +69,31 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTAlumnos);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, 130));
+
+        jBBuscar.setForeground(new java.awt.Color(51, 51, 51));
         jBBuscar.setText("Buscar");
+        jBBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 90, 30));
 
+        jBVolver.setForeground(new java.awt.Color(51, 51, 51));
         jBVolver.setText("Volver");
+        jBVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 90, 30));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("BUSCAR ALUMNO");
-
-        jRBBuscar.setText("Buscar por ID");
+        jRBBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        jRBBuscar.setForeground(new java.awt.Color(51, 51, 51));
+        jRBBuscar.setText("Buscar por legajo");
         jRBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRBBuscarMousePressed(evt);
@@ -88,58 +104,62 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
                 jRBBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
 
+        jTFBuscarID.setBackground(new java.awt.Color(255, 255, 255));
+        jTFBuscarID.setForeground(new java.awt.Color(204, 204, 204));
+        jTFBuscarID.setText("Ingrese el número de legajo aquí");
+        jTFBuscarID.setBorder(null);
+        jTFBuscarID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTFBuscarIDMousePressed(evt);
+            }
+        });
+        getContentPane().add(jTFBuscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 300, 30));
+
+        jRBMostrarTodos.setBackground(new java.awt.Color(255, 255, 255));
+        jRBMostrarTodos.setForeground(new java.awt.Color(51, 51, 51));
         jRBMostrarTodos.setText("Mostrar todos");
         jRBMostrarTodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRBMostrarTodosMousePressed(evt);
             }
         });
+        getContentPane().add(jRBMostrarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRBMostrarTodos)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRBBuscar)
-                        .addGap(30, 30, 30)
-                        .addComponent(jTFBuscarID, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(185, 185, 185))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBBuscar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBVolver))
-                        .addGap(28, 28, 28))))
+        jPanel1.setBackground(new java.awt.Color(38, 79, 135));
+
+        jLTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo2.setText("Buscar Alumno");
+
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLTitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRBBuscar)
-                    .addComponent(jTFBuscarID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscar))
-                .addGap(18, 18, 18)
-                .addComponent(jRBMostrarTodos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBVolver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(345, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 410));
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 300, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,6 +205,11 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBVolverActionPerformed
 
+    private void jTFBuscarIDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBuscarIDMousePressed
+        jTFBuscarID.setText("");
+        jTFBuscarID.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_jTFBuscarIDMousePressed
+
 
     private void armarCabecera() {
         ArrayList<Object> columnas = new ArrayList();
@@ -214,10 +239,13 @@ public class GUIBuscarAlumno extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBVolver;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBBuscar;
     private javax.swing.JRadioButton jRBMostrarTodos;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTAlumnos;
     private javax.swing.JTextField jTFBuscarID;
     // End of variables declaration//GEN-END:variables

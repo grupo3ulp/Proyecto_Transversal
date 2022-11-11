@@ -7,6 +7,7 @@ package PT.Gui;
 
 import PT.Control.DataMateria;
 import PT.Modelo.Materia;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -45,22 +46,43 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
         jTMateria = new javax.swing.JTable();
         jBBuscar = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jRBBuscar = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLTitulo2 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(729, 435));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTFBuscarID.setBackground(new java.awt.Color(255, 255, 255));
+        jTFBuscarID.setForeground(new java.awt.Color(204, 204, 204));
+        jTFBuscarID.setText("Ingrese el número de legajo aquí");
+        jTFBuscarID.setBorder(null);
+        jTFBuscarID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTFBuscarIDMousePressed(evt);
+            }
+        });
         jTFBuscarID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFBuscarIDKeyTyped(evt);
             }
         });
+        getContentPane().add(jTFBuscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 280, 30));
 
+        jRBMostrarTodos.setBackground(new java.awt.Color(255, 255, 255));
+        jRBMostrarTodos.setForeground(new java.awt.Color(51, 51, 51));
         jRBMostrarTodos.setText("Mostrar todas");
         jRBMostrarTodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRBMostrarTodosMousePressed(evt);
             }
         });
+        getContentPane().add(jRBMostrarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
 
+        jTMateria.setBackground(new java.awt.Color(255, 255, 255));
         jTMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -74,23 +96,30 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTMateria);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 420, 140));
+
+        jBBuscar.setForeground(new java.awt.Color(51, 51, 51));
         jBBuscar.setText("Buscar");
+        jBBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 90, 30));
 
+        jBVolver.setForeground(new java.awt.Color(51, 51, 51));
         jBVolver.setText("Volver");
+        jBVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 90, 30));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("BUSCAR MATERIA");
-
+        jRBBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        jRBBuscar.setForeground(new java.awt.Color(51, 51, 51));
         jRBBuscar.setText("Buscar por legajo");
         jRBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -102,51 +131,41 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
                 jRBBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRBMostrarTodos)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRBBuscar)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jTFBuscarID, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBBuscar)
-                            .addComponent(jBVolver))))
-                .addGap(30, 30, 30))
+        jPanel1.setBackground(new java.awt.Color(38, 79, 135));
+
+        jLTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitulo2.setText("Buscar Materia");
+
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLTitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRBBuscar)
-                    .addComponent(jTFBuscarID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscar))
-                .addGap(18, 18, 18)
-                .addComponent(jRBMostrarTodos)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBVolver)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(435, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 500));
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 280, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,14 +249,22 @@ public class GUIBuscarMateria extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTFBuscarIDKeyTyped
 
+    private void jTFBuscarIDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBuscarIDMousePressed
+        jTFBuscarID.setText("");
+        jTFBuscarID.setForeground(Color.DARK_GRAY);
+    }//GEN-LAST:event_jTFBuscarIDMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBVolver;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBBuscar;
     private javax.swing.JRadioButton jRBMostrarTodos;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTFBuscarID;
     private javax.swing.JTable jTMateria;
     // End of variables declaration//GEN-END:variables
